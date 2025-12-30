@@ -7,6 +7,7 @@
   <title>OutreachLegale — Premium Affiliate Intelligence Platform</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
     * {
       margin: 0;
@@ -14,7 +15,7 @@
       box-sizing: border-box;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     }
-    
+
     :root {
       --primary: #1a56db;
       --primary-dark: #1e429f;
@@ -39,7 +40,7 @@
       --radius-xl: 20px;
       --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    
+
     body {
       background: var(--bg);
       color: var(--dark);
@@ -48,8 +49,8 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
-    
-    /* Header משודרג */
+
+    /* Header */
     header {
       position: sticky;
       top: 0;
@@ -61,14 +62,14 @@
       box-shadow: var(--shadow-sm);
       transition: var(--transition);
     }
-    
+
     .header-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 18px 0;
     }
-    
+
     .logo {
       display: flex;
       align-items: center;
@@ -76,7 +77,7 @@
       text-decoration: none;
       transition: var(--transition);
     }
-    
+
     .logo-icon {
       display: flex;
       align-items: center;
@@ -88,12 +89,12 @@
       color: white;
       font-size: 18px;
     }
-    
+
     .logo-text {
       display: flex;
       flex-direction: column;
     }
-    
+
     .logo-main {
       color: var(--primary);
       font-weight: 900;
@@ -101,7 +102,7 @@
       letter-spacing: -0.5px;
       line-height: 1;
     }
-    
+
     .logo-sub {
       color: var(--muted);
       font-size: 11px;
@@ -110,13 +111,13 @@
       text-transform: uppercase;
       margin-top: 2px;
     }
-    
+
     .nav {
       display: flex;
       gap: 4px;
       flex-wrap: wrap;
     }
-    
+
     .nav a {
       color: var(--dark);
       text-decoration: none;
@@ -127,18 +128,18 @@
       transition: var(--transition);
       position: relative;
     }
-    
+
     .nav a:hover {
       background: var(--primary-light);
       color: var(--primary);
     }
-    
+
     .nav a.active {
       background: var(--primary);
       color: white;
       box-shadow: var(--shadow);
     }
-    
+
     .nav a.active:after {
       content: '';
       position: absolute;
@@ -150,14 +151,14 @@
       background: var(--primary);
       border-radius: 50%;
     }
-    
+
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 24px;
     }
-    
-    /* Hero משודרג */
+
+    /* Hero */
     .hero {
       background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
       color: white;
@@ -165,7 +166,7 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .hero:before {
       content: '';
       position: absolute;
@@ -175,7 +176,7 @@
       bottom: 0;
       background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
     }
-    
+
     .hero-content {
       max-width: 900px;
       margin: 0 auto;
@@ -183,7 +184,7 @@
       position: relative;
       z-index: 2;
     }
-    
+
     .hero h1 {
       font-size: 48px;
       line-height: 1.1;
@@ -191,7 +192,7 @@
       font-weight: 900;
       letter-spacing: -0.025em;
     }
-    
+
     .hero-subtitle {
       font-size: 20px;
       line-height: 1.5;
@@ -202,7 +203,7 @@
       margin-left: auto;
       margin-right: auto;
     }
-    
+
     .cta-row {
       display: flex;
       gap: 16px;
@@ -210,7 +211,7 @@
       flex-wrap: wrap;
       margin-bottom: 40px;
     }
-    
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -230,7 +231,7 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .btn:after {
       content: '';
       position: absolute;
@@ -241,32 +242,30 @@
       background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
       transition: left 0.7s ease;
     }
-    
-    .btn:hover:after {
-      left: 100%;
-    }
-    
+
+    .btn:hover:after { left: 100%; }
+
     .btn:hover {
       transform: translateY(-3px);
       box-shadow: var(--shadow-xl);
       filter: brightness(1.05);
     }
-    
+
     .btn-primary {
       background: white;
       color: var(--primary);
     }
-    
+
     .btn-secondary {
       background: rgba(255, 255, 255, 0.15);
       border: 1px solid rgba(255, 255, 255, 0.25);
       color: white;
     }
-    
+
     .btn-secondary:hover {
       background: rgba(255, 255, 255, 0.25);
     }
-    
+
     .trust-badges {
       display: flex;
       gap: 32px;
@@ -274,7 +273,7 @@
       flex-wrap: wrap;
       margin-top: 40px;
     }
-    
+
     .badge {
       display: flex;
       align-items: center;
@@ -283,18 +282,21 @@
       font-size: 14px;
       font-weight: 500;
     }
-    
+
     .badge i {
       font-size: 18px;
       color: var(--accent-light);
     }
-    
-    /* קטע מוצרים משודרג */
+
+    /* Sections */
+    section { padding: 90px 0; }
+    .section-alt { background: var(--light); }
+
     .section-title {
       text-align: center;
       margin-bottom: 48px;
     }
-    
+
     .section-title h2 {
       font-size: 36px;
       margin-bottom: 12px;
@@ -302,7 +304,7 @@
       color: var(--dark);
       letter-spacing: -0.025em;
     }
-    
+
     .section-title p {
       color: var(--muted);
       max-width: 700px;
@@ -310,22 +312,15 @@
       font-size: 18px;
       line-height: 1.6;
     }
-    
-    section {
-      padding: 90px 0;
-    }
-    
-    .section-alt {
-      background: var(--light);
-    }
-    
+
+    /* Cards */
     .offers-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
       gap: 24px;
       margin-top: 30px;
     }
-    
+
     .card {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -336,21 +331,31 @@
       display: flex;
       flex-direction: column;
       height: 100%;
+
+      /* reveal baseline */
+      opacity: 0;
+      transform: translateY(20px);
     }
-    
+
+    .card.reveal {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
     .card:hover {
       transform: translateY(-8px);
       box-shadow: var(--shadow-xl);
       border-color: var(--primary-light);
     }
-    
+
     .card-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       margin-bottom: 16px;
     }
-    
+
     .tag {
       display: inline-flex;
       align-items: center;
@@ -364,22 +369,11 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-    
-    .tag.green {
-      background: var(--accent-light);
-      color: #046c4e;
-    }
-    
-    .tag.purple {
-      background: rgba(126, 58, 242, 0.1);
-      color: var(--secondary);
-    }
-    
-    .tag.orange {
-      background: rgba(245, 158, 11, 0.1);
-      color: #92400e;
-    }
-    
+
+    .tag.green { background: var(--accent-light); color: #046c4e; }
+    .tag.purple { background: rgba(126, 58, 242, 0.1); color: var(--secondary); }
+    .tag.orange { background: rgba(245, 158, 11, 0.1); color: #92400e; }
+
     .rating {
       display: flex;
       align-items: center;
@@ -388,11 +382,9 @@
       font-weight: 600;
       color: var(--dark-light);
     }
-    
-    .rating i {
-      color: #fbbf24;
-    }
-    
+
+    .rating i { color: #fbbf24; }
+
     .card h3 {
       margin: 0 0 12px;
       font-size: 22px;
@@ -400,7 +392,7 @@
       color: var(--dark);
       line-height: 1.3;
     }
-    
+
     .card p {
       color: var(--muted);
       font-size: 15px;
@@ -408,14 +400,14 @@
       line-height: 1.6;
       flex-grow: 1;
     }
-    
+
     .features {
       list-style: none;
       display: grid;
       gap: 10px;
       margin: 16px 0 24px;
     }
-    
+
     .features li {
       display: flex;
       align-items: flex-start;
@@ -423,24 +415,21 @@
       color: var(--dark);
       font-size: 14px;
     }
-    
+
     .features i {
       color: var(--accent);
       margin-top: 3px;
       flex-shrink: 0;
     }
-    
+
     .card-actions {
       display: flex;
       gap: 12px;
       margin-top: auto;
     }
-    
-    .card-actions a {
-      flex: 1;
-      min-width: 140px;
-    }
-    
+
+    .card-actions a { flex: 1; min-width: 140px; }
+
     .btn-card {
       display: inline-flex;
       align-items: center;
@@ -454,13 +443,13 @@
       border-radius: var(--radius);
       transition: var(--transition);
     }
-    
+
     .btn-card:hover {
       background: var(--primary-dark);
       transform: translateY(-2px);
       box-shadow: var(--shadow);
     }
-    
+
     .btn-outline {
       display: inline-flex;
       align-items: center;
@@ -475,13 +464,13 @@
       border: 1px solid var(--border);
       transition: var(--transition);
     }
-    
+
     .btn-outline:hover {
       border-color: var(--primary);
       color: var(--primary);
       background: var(--primary-light);
     }
-    
+
     .affiliate-note {
       margin-top: 16px;
       color: var(--muted);
@@ -492,13 +481,10 @@
       border-radius: var(--radius-sm);
       border-left: 3px solid var(--accent);
     }
-    
-    /* FAQ משודרג */
-    .faq-container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    
+
+    /* FAQ */
+    .faq-container { max-width: 900px; margin: 0 auto; }
+
     .faq-item {
       background: white;
       border: 1px solid var(--border);
@@ -506,13 +492,23 @@
       overflow: hidden;
       margin-bottom: 16px;
       transition: var(--transition);
+
+      /* reveal baseline */
+      opacity: 0;
+      transform: translateY(20px);
     }
-    
+
+    .faq-item.reveal {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
     .faq-item:hover {
       border-color: var(--primary-light);
       box-shadow: var(--shadow);
     }
-    
+
     .faq-question {
       display: flex;
       align-items: center;
@@ -524,16 +520,14 @@
       font-size: 17px;
       color: var(--dark);
     }
-    
+
     .faq-question i {
       color: var(--primary);
       transition: var(--transition);
     }
-    
-    .faq-item.active .faq-question i {
-      transform: rotate(45deg);
-    }
-    
+
+    .faq-item.active .faq-question i { transform: rotate(45deg); }
+
     .faq-answer {
       max-height: 0;
       overflow: hidden;
@@ -542,19 +536,27 @@
       color: var(--muted);
       line-height: 1.6;
     }
-    
+
     .faq-item.active .faq-answer {
       max-height: 300px;
       padding: 0 24px 24px;
     }
-    
-    /* Footer משודרג */
+
+    /* pulse */
+    .pulse { animation: pulse 2s infinite; }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(10, 149, 255, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(10, 149, 255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(10, 149, 255, 0); }
+    }
+
+    /* Footer */
     footer {
       background: var(--dark);
       color: #d1d5db;
       padding: 70px 0 30px;
     }
-    
+
     .footer-content {
       display: flex;
       justify-content: space-between;
@@ -562,30 +564,28 @@
       gap: 40px;
       margin-bottom: 50px;
     }
-    
+
     .footer-logo {
       display: flex;
       flex-direction: column;
       gap: 16px;
       max-width: 300px;
     }
-    
-    .footer-logo .logo {
-      justify-content: flex-start;
-    }
-    
+
+    .footer-logo .logo { justify-content: flex-start; }
+
     .footer-logo p {
       font-size: 14px;
       line-height: 1.6;
       color: #9ca3af;
     }
-    
+
     .footer-links {
       display: flex;
       gap: 60px;
       flex-wrap: wrap;
     }
-    
+
     .footer-col h4 {
       color: white;
       font-size: 16px;
@@ -593,26 +593,19 @@
       margin-bottom: 18px;
       letter-spacing: 0.5px;
     }
-    
-    .footer-col ul {
-      list-style: none;
-    }
-    
-    .footer-col li {
-      margin-bottom: 10px;
-    }
-    
+
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+
     .footer-col a {
       color: #9ca3af;
       text-decoration: none;
       font-size: 14px;
       transition: var(--transition);
     }
-    
-    .footer-col a:hover {
-      color: white;
-    }
-    
+
+    .footer-col a:hover { color: white; }
+
     .disclaimer {
       max-width: 1000px;
       margin: 40px auto 0;
@@ -622,134 +615,55 @@
       padding-top: 30px;
       border-top: 1px solid #374151;
       text-align: center;
+      scroll-margin-top: 90px; /* nice anchor offset */
     }
-    
-    /* אנימציות */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    .animate {
-      animation: fadeInUp 0.6s ease forwards;
-    }
-    
-    .delay-1 { animation-delay: 0.1s; opacity: 0; }
-    .delay-2 { animation-delay: 0.2s; opacity: 0; }
-    .delay-3 { animation-delay: 0.3s; opacity: 0; }
-    .delay-4 { animation-delay: 0.4s; opacity: 0; }
-    .delay-5 { animation-delay: 0.5s; opacity: 0; }
-    
-    /* אפקטים מיוחדים */
-    .pulse {
-      animation: pulse 2s infinite;
-    }
-    
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(10, 149, 255, 0.4); }
-      70% { box-shadow: 0 0 0 10px rgba(10, 149, 255, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(10, 149, 255, 0); }
-    }
-    
-    /* רספונסיביות */
+
+    /* Responsive */
     @media (max-width: 1024px) {
-      .offers-container {
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      }
-      
-      .hero h1 {
-        font-size: 40px;
-      }
+      .offers-container { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+      .hero h1 { font-size: 40px; }
     }
-    
+
     @media (max-width: 768px) {
       .header-row {
         flex-direction: column;
         gap: 20px;
         padding: 20px 0;
       }
-      
-      .nav {
-        width: 100%;
-        justify-content: center;
-      }
-      
-      .hero {
-        padding: 80px 0 60px;
-      }
-      
-      .hero h1 {
-        font-size: 32px;
-      }
-      
-      .hero-subtitle {
-        font-size: 18px;
-      }
-      
-      .cta-row {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .btn {
-        width: 100%;
-        max-width: 300px;
-      }
-      
-      .section-title h2 {
-        font-size: 28px;
-      }
-      
-      section {
-        padding: 60px 0;
-      }
-      
-      .footer-content {
-        flex-direction: column;
-        gap: 40px;
-      }
-      
-      .footer-links {
-        gap: 40px;
-      }
+
+      .nav { width: 100%; justify-content: center; }
+      .hero { padding: 80px 0 60px; }
+      .hero h1 { font-size: 32px; }
+      .hero-subtitle { font-size: 18px; }
+
+      .cta-row { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 300px; }
+
+      .section-title h2 { font-size: 28px; }
+      section { padding: 60px 0; }
+
+      .footer-content { flex-direction: column; gap: 40px; }
+      .footer-links { gap: 40px; }
     }
-    
+
     @media (max-width: 480px) {
-      .container {
-        padding: 0 16px;
-      }
-      
+      .container { padding: 0 16px; }
+
       .nav {
         overflow-x: auto;
         justify-content: flex-start;
         padding-bottom: 10px;
       }
-      
-      .nav a {
-        font-size: 13px;
-        padding: 8px 12px;
-      }
-      
-      .offers-container {
-        grid-template-columns: 1fr;
-      }
-      
-      .card-actions {
-        flex-direction: column;
-      }
-      
-      .card-actions a {
-        min-width: 100%;
-      }
+
+      .nav a { font-size: 13px; padding: 8px 12px; }
+      .offers-container { grid-template-columns: 1fr; }
+
+      .card-actions { flex-direction: column; }
+      .card-actions a { min-width: 100%; }
     }
   </style>
 </head>
+
 <body>
 
 <header>
@@ -761,15 +675,15 @@
         </div>
         <div class="logo-text">
           <div class="logo-main">OutreachLegale</div>
-          <div class="logo-sub">Intelligence Platform</div>
+          <div class="logo-sub">Affiliate Platform</div>
         </div>
       </a>
+
       <nav class="nav">
         <a href="#top" class="active">Home</a>
         <a href="#offers">Top Offers</a>
-        <a href="#performance">Performance</a>
         <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
+        <a href="#disclaimer">Disclosure</a>
       </nav>
     </div>
   </div>
@@ -777,31 +691,33 @@
 
 <section class="hero" id="top">
   <div class="hero-content container">
-    <h1 class="animate">Premium Affiliate Intelligence Platform</h1>
-    <p class="hero-subtitle animate delay-1">
-      Expertly curated ClickBank offers with transparent tracking, real-time analytics, and data-driven optimization. 
-      Our platform delivers the highest converting products with full disclosure.
+    <h1>Affiliate Intelligence Platform</h1>
+    <p class="hero-subtitle">
+      Curated selection of ClickBank offers with transparent tracking and clear disclosure.
+      We focus on providing clear information about popular affiliate products.
     </p>
+
     <div class="cta-row">
-      <a class="btn btn-primary animate delay-2" href="#offers">
-        <i class="fa-solid fa-bolt"></i> Explore Top Offers
+      <a class="btn btn-primary" href="#offers">
+        <i class="fa-solid fa-bolt"></i> View Top Offers
       </a>
-      <a class="btn btn-secondary animate delay-3" href="#faq">
+      <a class="btn btn-secondary" href="#faq">
         <i class="fa-solid fa-circle-info"></i> How It Works
       </a>
     </div>
+
     <div class="trust-badges">
-      <div class="badge animate delay-4">
+      <div class="badge">
         <i class="fa-solid fa-shield-check"></i>
         <span>Full Transparency & Disclosure</span>
       </div>
-      <div class="badge animate delay-4">
+      <div class="badge">
         <i class="fa-solid fa-chart-bar"></i>
-        <span>Real-Time Performance Tracking</span>
+        <span>Performance Tracking</span>
       </div>
-      <div class="badge animate delay-5">
-        <i class="fa-solid fa-trophy"></i>
-        <span>Premium Curated Selection</span>
+      <div class="badge">
+        <i class="fa-solid fa-star"></i>
+        <span>Curated Selection</span>
       </div>
     </div>
   </div>
@@ -810,13 +726,13 @@
 <section id="offers">
   <div class="container">
     <div class="section-title">
-      <h2 class="animate">Premium Curated Offers</h2>
-      <p class="animate delay-1">Our data-driven selection of top-performing ClickBank offers. Each product is vetted for quality, conversion rates, and audience fit.</p>
+      <h2>Curated Affiliate Offers</h2>
+      <p>Our selection of popular ClickBank offers. Each product includes clear information and affiliate disclosure.</p>
     </div>
 
     <div class="offers-container">
       <!-- ProDentim -->
-      <div class="card animate delay-1">
+      <div class="card">
         <div class="card-header">
           <span class="tag green"><i class="fa-solid fa-tooth"></i> Dental Health</span>
           <div class="rating">
@@ -825,16 +741,16 @@
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star-half"></i>
-            <span>4.5</span>
+            <span>Popular Offer</span>
           </div>
         </div>
-        <h3>ProDentim Advanced Formula</h3>
-        <p>A premium dental health supplement designed to support oral microbiome balance and gum health with clinically studied probiotics.</p>
+        <h3>ProDentim Oral Health</h3>
+        <p>A dental health supplement marketed to support oral wellness with probiotic ingredients. Popular in the dental niche.</p>
         <ul class="features">
-          <li><i class="fa-solid fa-check-circle"></i> 3.5 billion CFU probiotic strains</li>
-          <li><i class="fa-solid fa-check-circle"></i> Natural ingredients, no stimulants</li>
-          <li><i class="fa-solid fa-check-circle"></i> 60-day money-back guarantee</li>
-          <li><i class="fa-solid fa-check-circle"></i> High converting landing pages</li>
+          <li><i class="fa-solid fa-check-circle"></i> Probiotic formula for oral care</li>
+          <li><i class="fa-solid fa-check-circle"></i> Marketed as natural ingredients</li>
+          <li><i class="fa-solid fa-check-circle"></i> Money-back guarantee offered</li>
+          <li><i class="fa-solid fa-check-circle"></i> Frequently promoted by affiliates</li>
         </ul>
         <div class="card-actions">
           <a class="btn-card" target="_blank" rel="noopener"
@@ -851,7 +767,7 @@
       </div>
 
       <!-- ProstaVive A -->
-      <div class="card animate delay-2">
+      <div class="card">
         <div class="card-header">
           <span class="tag purple"><i class="fa-solid fa-person"></i> Men's Health</span>
           <div class="rating">
@@ -860,16 +776,16 @@
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
-            <span>5.0</span>
+            <span>High Gravity</span>
           </div>
         </div>
         <h3>ProstaVive Prostate Support</h3>
-        <p>Advanced prostate support formula for men 45+. Features natural ingredients to promote urinary function and prostate health.</p>
+        <p>A men's health supplement marketed for prostate support. Popular with audiences interested in men's wellness.</p>
         <ul class="features">
-          <li><i class="fa-solid fa-check-circle"></i> Saw Palmetto & Beta-Sitosterol</li>
-          <li><i class="fa-solid fa-check-circle"></i> Non-GMO, made in USA</li>
-          <li><i class="fa-solid fa-check-circle"></i> 90-day satisfaction guarantee</li>
-          <li><i class="fa-solid fa-check-circle"></i> Strong affiliate support</li>
+          <li><i class="fa-solid fa-check-circle"></i> Marketed for men 45+</li>
+          <li><i class="fa-solid fa-check-circle"></i> Contains traditional herbal ingredients</li>
+          <li><i class="fa-solid fa-check-circle"></i> Satisfaction guarantee available</li>
+          <li><i class="fa-solid fa-check-circle"></i> Strong affiliate support materials</li>
         </ul>
         <div class="card-actions">
           <a class="btn-card" target="_blank" rel="noopener"
@@ -886,7 +802,7 @@
       </div>
 
       <!-- Mitolyn -->
-      <div class="card animate delay-3">
+      <div class="card">
         <div class="card-header">
           <span class="tag orange"><i class="fa-solid fa-fire"></i> Metabolism</span>
           <div class="rating">
@@ -895,16 +811,16 @@
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
             <i class="fa-regular fa-star"></i>
-            <span>4.0</span>
+            <span>Wellness Niche</span>
           </div>
         </div>
         <h3>Mitolyn Metabolic Support</h3>
-        <p>Advanced metabolic formula designed to support healthy energy levels and weight management through cellular optimization.</p>
+        <p>A supplement marketed to support metabolic function and energy levels. Appeals to fitness and wellness audiences.</p>
         <ul class="features">
-          <li><i class="fa-solid fa-check-circle"></i> Patented Mito Blend Complex</li>
-          <li><i class="fa-solid fa-check-circle"></i> 100% natural ingredients</li>
-          <li><i class="fa-solid fa-check-circle"></i> 60-day money-back guarantee</li>
-          <li><i class="fa-solid fa-check-circle"></i> High EPC on fitness traffic</li>
+          <li><i class="fa-solid fa-check-circle"></i> Marketed for energy support</li>
+          <li><i class="fa-solid fa-check-circle"></i> Popular in fitness communities</li>
+          <li><i class="fa-solid fa-check-circle"></i> Money-back guarantee option</li>
+          <li><i class="fa-solid fa-check-circle"></i> Strong landing page conversion</li>
         </ul>
         <div class="card-actions">
           <a class="btn-card" target="_blank" rel="noopener"
@@ -921,7 +837,7 @@
       </div>
 
       <!-- Joint Genesis -->
-      <div class="card animate delay-4">
+      <div class="card">
         <div class="card-header">
           <span class="tag green"><i class="fa-solid fa-person-walking"></i> Mobility</span>
           <div class="rating">
@@ -930,16 +846,16 @@
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star-half"></i>
-            <span>4.5</span>
+            <span>Active Lifestyle</span>
           </div>
         </div>
-        <h3>Joint Genesis Mobility Formula</h3>
-        <p>Advanced joint support supplement featuring patented ingredients to promote flexibility, comfort, and active lifestyle support.</p>
+        <h3>Joint Genesis Mobility</h3>
+        <p>A joint support supplement marketed for mobility and comfort. Popular with active individuals and older demographics.</p>
         <ul class="features">
-          <li><i class="fa-solid fa-check-circle"></i> Patented Boswellia & Hyaluronic Acid</li>
-          <li><i class="fa-solid fa-check-circle"></i> Vegan-friendly formula</li>
-          <li><i class="fa-solid fa-check-circle"></i> 180-day money-back guarantee</li>
-          <li><i class="fa-solid fa-check-circle"></i> Excellent for 50+ audience</li>
+          <li><i class="fa-solid fa-check-circle"></i> Marketed for joint comfort</li>
+          <li><i class="fa-solid fa-check-circle"></i> Appeals to active lifestyle audience</li>
+          <li><i class="fa-solid fa-check-circle"></i> Extended guarantee offered</li>
+          <li><i class="fa-solid fa-check-circle"></i> Clear value proposition</li>
         </ul>
         <div class="card-actions">
           <a class="btn-card" target="_blank" rel="noopener"
@@ -956,7 +872,7 @@
       </div>
 
       <!-- ProstaVive B -->
-      <div class="card animate delay-5">
+      <div class="card">
         <div class="card-header">
           <span class="tag purple"><i class="fa-solid fa-flask"></i> A/B Test</span>
           <div class="rating">
@@ -965,21 +881,21 @@
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
-            <span>5.0</span>
+            <span>Tracking Test</span>
           </div>
         </div>
-        <h3>ProstaVive Premium</h3>
-        <p>Alternative tracking link for the same premium prostate support formula. Used for performance comparison and optimization testing.</p>
+        <h3>ProstaVive (Alternative Link)</h3>
+        <p>Same prostate support formula with different tracking parameters. Used to compare performance between different tracking links.</p>
         <ul class="features">
-          <li><i class="fa-solid fa-check-circle"></i> Same premium formula</li>
-          <li><i class="fa-solid fa-check-circle"></i> Different tracking parameters</li>
-          <li><i class="fa-solid fa-check-circle"></i> Performance comparison data</li>
-          <li><i class="fa-solid fa-check-circle"></i> Optimization insights</li>
+          <li><i class="fa-solid fa-check-circle"></i> Same product, different tracking</li>
+          <li><i class="fa-solid fa-check-circle"></i> Useful for performance comparison</li>
+          <li><i class="fa-solid fa-check-circle"></i> Satisfaction guarantee available</li>
+          <li><i class="fa-solid fa-check-circle"></i> Performance tracking data</li>
         </ul>
         <div class="card-actions">
           <a class="btn-card pulse" target="_blank" rel="noopener"
              href="https://782a0yoyhpg32s9gxd6a3-dl4q.hop.clickbank.net/?tid=prostavive_b_main">
-            <i class="fa-solid fa-chart-line"></i> Test This Offer
+            <i class="fa-solid fa-chart-line"></i> Test This Link
           </a>
           <a class="btn-outline" href="#faq">
             <i class="fa-solid fa-info-circle"></i> Why Two Links?
@@ -993,25 +909,28 @@
   </div>
 </section>
 
-<section class="section-alt" id="performance">
+<section class="section-alt" id="tracking">
   <div class="container">
     <div class="section-title">
-      <h2 class="animate">Performance Intelligence</h2>
-      <p class="animate delay-1">Our platform provides real-time tracking and optimization insights to maximize your results.</p>
+      <h2>Transparent Tracking</h2>
+      <p>We use clear tracking methods to measure performance while maintaining full disclosure.</p>
     </div>
     <div style="max-width: 800px; margin: 0 auto;">
-      <div class="card animate delay-2">
-        <h3>Tracking & Optimization</h3>
-        <p>Each offer includes unique tracking parameters that provide insights into:</p>
+      <div class="card">
+        <h3>How Our Tracking Works</h3>
+        <p>Each offer includes unique tracking parameters that provide basic performance insights:</p>
         <ul class="features" style="margin-top: 20px;">
-          <li><i class="fa-solid fa-bullseye"></i> <strong>Click-Through Rates (CTR):</strong> Measure engagement for each offer placement</li>
-          <li><i class="fa-solid fa-chart-line"></i> <strong>Conversion Performance:</strong> Track which offers convert best for your audience</li>
-          <li><i class="fa-solid fa-sliders"></i> <strong>A/B Testing Data:</strong> Compare different links and optimize based on performance</li>
-          <li><i class="fa-solid fa-shield-alt"></i> <strong>Compliance Monitoring:</strong> Ensure all offers meet disclosure requirements</li>
+          <li><i class="fa-solid fa-bullseye"></i> <strong>Click Tracking:</strong> Basic measurement of link engagement</li>
+          <li><i class="fa-solid fa-chart-line"></i> <strong>Performance Comparison:</strong> Simple A/B testing between different links</li>
+          <li><i class="fa-solid fa-shield-alt"></i> <strong>Full Disclosure:</strong> Clear affiliate relationship disclosure on every offer</li>
+          <li><i class="fa-solid fa-tag"></i> <strong>Tracking IDs:</strong> Each link includes a "tid" parameter for basic tracking</li>
         </ul>
         <div style="margin-top: 30px; padding: 20px; background: var(--light); border-radius: var(--radius);">
-          <h4 style="margin-bottom: 10px;">How Tracking Works</h4>
-          <p style="font-size: 14px; color: var(--muted);">Each link includes a "tid" (tracking ID) parameter that allows us to monitor performance while maintaining full transparency. This data helps us continuously improve our recommendations.</p>
+          <h4 style="margin-bottom: 10px;">Simple & Transparent</h4>
+          <p style="font-size: 14px; color: var(--muted);">
+            Our approach focuses on transparency rather than complex analytics. Every affiliate relationship is clearly disclosed,
+            and tracking is limited to basic ClickBank parameters.
+          </p>
         </div>
       </div>
     </div>
@@ -1021,22 +940,22 @@
 <section id="faq">
   <div class="container">
     <div class="section-title">
-      <h2 class="animate">Frequently Asked Questions</h2>
-      <p class="animate delay-1">Clear answers to common questions about our platform and affiliate offers.</p>
+      <h2>Frequently Asked Questions</h2>
+      <p>Clear answers to common questions about our platform and affiliate offers.</p>
     </div>
-    
+
     <div class="faq-container">
-      <div class="faq-item animate delay-2">
+      <div class="faq-item">
         <div class="faq-question" onclick="toggleFAQ(this)">
           <span>How does the affiliate commission work?</span>
           <i class="fa-solid fa-plus"></i>
         </div>
         <div class="faq-answer">
-          <p>When you click on an offer link and make a purchase, we may earn a commission at no additional cost to you. This is how we maintain and improve our platform. All affiliate relationships are fully disclosed as required by FTC guidelines.</p>
+          <p>When you click on an offer link and make a purchase, we may earn a commission at no additional cost to you. This is how we maintain our platform. All affiliate relationships are fully disclosed as required by FTC guidelines.</p>
         </div>
       </div>
-      
-      <div class="faq-item animate delay-3">
+
+      <div class="faq-item">
         <div class="faq-question" onclick="toggleFAQ(this)">
           <span>Is this medical advice or treatment?</span>
           <i class="fa-solid fa-plus"></i>
@@ -1045,34 +964,34 @@
           <p>No. Our platform provides information about health and wellness products available on ClickBank. We do not provide medical advice, diagnosis, or treatment recommendations. Always consult with a healthcare professional before starting any new supplement or health regimen.</p>
         </div>
       </div>
-      
-      <div class="faq-item animate delay-4">
+
+      <div class="faq-item">
         <div class="faq-question" onclick="toggleFAQ(this)">
           <span>Why are there two ProstaVive links?</span>
           <i class="fa-solid fa-plus"></i>
         </div>
         <div class="faq-answer">
-          <p>We include two different tracking links for the same offer to perform A/B testing. This allows us to gather performance data and optimize our recommendations. Both links lead to the same product page - the only difference is the tracking parameters.</p>
+          <p>We include two different tracking links for the same offer to perform simple A/B testing. This allows us to gather basic performance data. Both links lead to the same product page - the only difference is the tracking parameters.</p>
         </div>
       </div>
-      
-      <div class="faq-item animate delay-5">
+
+      <div class="faq-item">
         <div class="faq-question" onclick="toggleFAQ(this)">
           <span>What do the "tid=" tracking codes do?</span>
           <i class="fa-solid fa-plus"></i>
         </div>
         <div class="faq-answer">
-          <p>The "tid" (tracking ID) parameter helps us monitor which links are performing best. This data is used to improve our platform and provide better recommendations. It does not affect pricing or user experience in any way.</p>
+          <p>The "tid" (tracking ID) parameter helps us monitor which links are performing better. This data is used to improve our recommendations. It does not affect pricing or user experience in any way.</p>
         </div>
       </div>
-      
-      <div class="faq-item animate delay-5">
+
+      <div class="faq-item">
         <div class="faq-question" onclick="toggleFAQ(this)">
           <span>How do you select the offers on this platform?</span>
           <i class="fa-solid fa-plus"></i>
         </div>
         <div class="faq-answer">
-          <p>We use a data-driven approach to select offers based on conversion rates, gravity scores, vendor reputation, product quality, and customer feedback. We focus on products with strong value propositions and good customer support.</p>
+          <p>We select offers based on popularity, gravity scores, and vendor reputation within the ClickBank marketplace. We focus on products with clear information and good customer feedback.</p>
         </div>
       </div>
     </div>
@@ -1089,83 +1008,70 @@
           </div>
           <div class="logo-text">
             <div class="logo-main">OutreachLegale</div>
-            <div class="logo-sub">Intelligence Platform</div>
+            <div class="logo-sub">Affiliate Platform</div>
           </div>
         </a>
-        <p>Premium affiliate intelligence platform providing data-driven insights and transparent tracking for top-performing ClickBank offers.</p>
+        <p>Affiliate platform providing information about popular ClickBank offers with transparent tracking and clear disclosure.</p>
       </div>
-      
+
       <div class="footer-links">
         <div class="footer-col">
           <h4>Platform</h4>
           <ul>
             <li><a href="#top">Home</a></li>
             <li><a href="#offers">Top Offers</a></li>
-            <li><a href="#performance">Performance</a></li>
             <li><a href="#faq">FAQ</a></li>
+            <li><a href="#tracking">Tracking Info</a></li>
           </ul>
         </div>
-        
+
         <div class="footer-col">
           <h4>Legal</h4>
           <ul>
             <li><a href="#disclaimer">Affiliate Disclosure</a></li>
-            <li><a href="#privacy">Privacy Policy</a></li>
-            <li><a href="#terms">Terms of Service</a></li>
-            <li><a href="#compliance">FTC Compliance</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="#support">Support</a></li>
-            <li><a href="#suggestions">Offer Suggestions</a></li>
-            <li><a href="#partnerships">Partnerships</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#tracking">Tracking Info</a></li>
           </ul>
         </div>
       </div>
     </div>
-    
-    <div class="disclaimer">
-      <strong>AFFILIATE DISCLOSURE:</strong> OutreachLegale is an independent affiliate platform. We may earn commissions from qualifying purchases made through links on this site. This comes at no extra cost to you and helps support our research and platform maintenance. We strive to provide accurate information but make no guarantees regarding product effectiveness or results. Always do your own research and consult with professionals when needed. Product names, logos, brands, and other trademarks are the property of their respective owners.
+
+    <!-- ✅ FIX #1: Real anchor target exists -->
+    <div class="disclaimer" id="disclaimer">
+      <strong>AFFILIATE DISCLOSURE:</strong> OutreachLegale is an independent affiliate platform. We may earn commissions from qualifying purchases made through links on this site.
+      This comes at no extra cost to you and helps support our platform. We provide information about affiliate offers but make no guarantees regarding product effectiveness or results.
+      Always do your own research and consult with professionals when needed. Product names, logos, brands, and other trademarks are the property of their respective owners.
     </div>
   </div>
 </footer>
 
 <script>
-  // אנימציה לגילוי אלמנטים
-  document.addEventListener('DOMContentLoaded', function() {
+  // ✅ FIX #2 + #3: Clean reveal logic (no double meaning "reveal")
+  document.addEventListener('DOMContentLoaded', function () {
     const observerOptions = {
       root: null,
-      rootMargin: '0px',
-      threshold: 0.1
+      rootMargin: '0px 0px -10% 0px',
+      threshold: 0.12
     };
-    
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate');
+          entry.target.classList.add('reveal');
           observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
-    
-    // מעקב אחרי כל האלמנטים עם קלאס של delay
-    document.querySelectorAll('.delay-1, .delay-2, .delay-3, .delay-4, .delay-5').forEach(el => {
-      observer.observe(el);
-    });
-    
-    // הצגת השעה הנוכחית בכותרת
-    updateDateTime();
-    setInterval(updateDateTime, 60000);
+
+    // Observe only what should animate-in
+    document.querySelectorAll('.card, .faq-item').forEach(el => observer.observe(el));
   });
-  
-  // פונקציה לפתיחה וסגירה של שאלות FAQ
+
+  // FAQ toggle
   function toggleFAQ(element) {
     const faqItem = element.parentElement;
     faqItem.classList.toggle('active');
-    
+
     const icon = element.querySelector('i');
     if (faqItem.classList.contains('active')) {
       icon.classList.remove('fa-plus');
@@ -1175,39 +1081,21 @@
       icon.classList.add('fa-plus');
     }
   }
-  
-  // עדכון תאריך ושעה
-  function updateDateTime() {
-    const now = new Date();
-    const options = { 
-      weekday: 'long', 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    };
-    const dateTimeStr = now.toLocaleDateString('en-US', options);
-    
-    // אפשר להוסיף הצגת תאריך אם תרצה
-    // document.getElementById('currentDateTime').textContent = dateTimeStr;
-  }
-  
-  // החלקה חלקה ל-anchor links
+
+  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      
+    anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
-      
+      if (!targetId || targetId === '#') return;
+
       const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        window.scrollTo({
-          top: targetElement.offsetTop - 80,
-          behavior: 'smooth'
-        });
-      }
+      if (!targetElement) return;
+
+      e.preventDefault();
+      window.scrollTo({
+        top: targetElement.offsetTop - 80,
+        behavior: 'smooth'
+      });
     });
   });
 </script>
