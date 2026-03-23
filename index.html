@@ -3,105 +3,303 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Top Offers — OutreachGo</title>
-  <meta name="description" content="Browse hand-selected, independently reviewed business platforms. No paid placements."/>
+  <title>OutreachGo — The Curator's Edge for Business Tools</title>
+  <meta name="description" content="Independently curated, high-performance business platforms — vetted for results, not commissions."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --void: #080910; --deep: #0e1018; --layer: #13151f;
+      --void: #080910;
+      --deep: #0e1018;
+      --layer: #13151f;
       --glass: rgba(255,255,255,.035);
       --glass-border: rgba(255,255,255,.075);
       --glass-border-bright: rgba(255,255,255,.13);
-      --text: #e8e8ee; --text-muted: #7a7a96; --text-faint: #3e3e58;
-      --gold: #c9a84c; --gold-light: #e8ca78;
-      --gold-dim: rgba(201,168,76,.12); --gold-glow: rgba(201,168,76,.06);
-      --teal: #3ecfb2; --teal-dim: rgba(62,207,178,.1);
-      --radius: 16px; --radius-sm: 10px;
+      --text: #e8e8ee;
+      --text-muted: #7a7a96;
+      --text-faint: #3e3e58;
+      --gold: #c9a84c;
+      --gold-light: #e8ca78;
+      --gold-dim: rgba(201,168,76,.12);
+      --gold-glow: rgba(201,168,76,.06);
+      --teal: #3ecfb2;
+      --teal-dim: rgba(62,207,178,.1);
+      --radius: 16px;
+      --radius-sm: 10px;
       --transition: 0.24s cubic-bezier(.4,0,.2,1);
       --font-display: 'Playfair Display', Georgia, serif;
       --font-body: 'Syne', sans-serif;
     }
+
     html { scroll-behavior: smooth; background: var(--void); }
-    body { font-family: var(--font-body); background: var(--void); color: var(--text); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 
-    /* NAV */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(1.5rem, 5vw, 4rem); height: 68px; background: rgba(8,9,16,.75); backdrop-filter: blur(24px) saturate(1.6); border-bottom: 1px solid var(--glass-border); }
-    .nav-logo { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; letter-spacing: -.01em; color: var(--text); text-decoration: none; }
+    body {
+      font-family: var(--font-body);
+      background: var(--void);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* noise texture */
+    body::after {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      opacity: .5;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      height: 68px;
+      background: rgba(8,9,16,.75);
+      backdrop-filter: blur(24px) saturate(1.6);
+      -webkit-backdrop-filter: blur(24px) saturate(1.6);
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.35rem; font-weight: 700; letter-spacing: -.01em;
+      color: var(--text); text-decoration: none;
+    }
     .nav-logo em { font-style: italic; color: var(--gold); }
-    .nav-center { display: flex; gap: 2.5rem; list-style: none; position: absolute; left: 50%; transform: translateX(-50%); }
-    .nav-center a { font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color var(--transition); }
-    .nav-center a:hover, .nav-center a.active { color: var(--gold); }
-    .nav-back { display: inline-flex; align-items: center; gap: .4rem; font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color var(--transition); }
-    .nav-back:hover { color: var(--text); }
+    .nav-center {
+      display: flex; gap: 2.5rem; list-style: none;
+      position: absolute; left: 50%; transform: translateX(-50%);
+    }
+    .nav-center a {
+      font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--text-muted); text-decoration: none; transition: color var(--transition);
+    }
+    .nav-center a:hover { color: var(--text); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--gold); color: var(--void);
+      padding: .5rem 1.25rem; border-radius: 50px;
+      font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      text-decoration: none; transition: all var(--transition);
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
 
-    /* PAGE HEADER */
-    .page-header {
-      padding: calc(68px + 4rem) clamp(1.5rem, 5vw, 4rem) 3rem;
-      position: relative; overflow: hidden;
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 68px clamp(1.5rem, 5vw, 4rem) clamp(4rem, 8vh, 7rem);
+      overflow: hidden; position: relative;
     }
-    .page-header::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,168,76,.07) 0%, transparent 70%);
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 15% 80%, rgba(201,168,76,.08) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 85% 20%, rgba(62,207,178,.05) 0%, transparent 60%),
+        var(--void);
     }
-    .ph-inner { max-width: 700px; position: relative; }
-    .kicker { display: inline-flex; align-items: center; gap: .5rem; font-size: .7rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
-    .kicker::after { content: ''; display: block; width: 22px; height: 1px; background: var(--gold); }
-    h1 { font-family: var(--font-display); font-size: clamp(2.25rem, 5vw, 4rem); font-weight: 900; line-height: 1.05; letter-spacing: -.02em; color: var(--text); margin-bottom: .75rem; }
+    .hero-grid-lines {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.012) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+    .hero-content { max-width: 860px; position: relative; z-index: 2; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .7rem;
+      font-size: .7rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.75rem;
+    }
+    .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold); flex-shrink: 0; }
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 7.5vw, 6.5rem);
+      font-weight: 900; line-height: 1.0; letter-spacing: -.02em;
+      color: var(--text); margin-bottom: 2rem;
+    }
     h1 em { font-style: italic; color: var(--gold); }
-    .page-desc { font-size: .9375rem; color: var(--text-muted); line-height: 1.7; }
+    .hero-sub {
+      font-size: 1.0625rem; color: var(--text-muted);
+      max-width: 520px; line-height: 1.75; margin-bottom: 2.5rem;
+    }
+    .hero-actions { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: var(--gold); color: var(--void);
+      padding: .9rem 2.25rem; border-radius: 50px;
+      font-size: .875rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+      text-decoration: none; transition: all var(--transition);
+      box-shadow: 0 0 40px rgba(201,168,76,.18);
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 0 60px rgba(201,168,76,.28); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: .5rem;
+      color: var(--text-muted); text-decoration: none;
+      font-size: .8125rem; font-weight: 600; transition: color var(--transition);
+    }
+    .btn-ghost:hover { color: var(--text); }
+    .hero-stats {
+      display: flex; gap: 3rem; margin-top: 4rem;
+      padding-top: 2rem; border-top: 1px solid var(--glass-border);
+    }
+    .stat-val {
+      font-family: var(--font-display);
+      font-size: 2.25rem; font-weight: 700; line-height: 1; color: var(--text);
+    }
+    .stat-lbl { font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); margin-top: .35rem; }
 
-    /* FILTER BAR */
-    .filter-bar { padding: 0 clamp(1.5rem, 5vw, 4rem) 2rem; display: flex; gap: .5rem; flex-wrap: wrap; border-bottom: 1px solid var(--glass-border); }
-    .filter-btn { padding: .45rem 1.1rem; border-radius: 50px; border: 1px solid var(--glass-border); background: transparent; color: var(--text-muted); font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; transition: all var(--transition); font-family: var(--font-body); }
-    .filter-btn:hover { border-color: var(--glass-border-bright); color: var(--text); }
-    .filter-btn.active { background: var(--gold-dim); color: var(--gold); border-color: rgba(201,168,76,.3); }
+    /* ─── TICKER ─── */
+    .ticker {
+      background: var(--deep); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);
+      padding: .8rem 0; overflow: hidden; white-space: nowrap;
+    }
+    .ticker-inner { display: inline-flex; gap: 3.5rem; animation: tick 30s linear infinite; }
+    .t-item { display: inline-flex; align-items: center; gap: .65rem; font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-faint); }
+    .t-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+    @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* OFFERS */
-    .offers-section { padding: 3rem clamp(1.5rem, 5vw, 4rem) 6rem; }
-    .offers-list { display: flex; flex-direction: column; gap: 1.25rem; }
+    /* ─── SECTION SHARED ─── */
+    section { padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem); }
+    .kicker {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .7rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .kicker::after { content: ''; display: block; width: 22px; height: 1px; background: var(--gold); }
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-weight: 700; line-height: 1.1; letter-spacing: -.02em; color: var(--text);
+    }
+    h2 em { font-style: italic; color: var(--gold); }
+    .sec-sub { font-size: .9375rem; color: var(--text-muted); max-width: 460px; line-height: 1.75; margin-top: .75rem; }
 
-    .offer-row {
-      display: grid; grid-template-columns: 80px 1fr auto;
-      align-items: center; gap: 2rem;
-      background: var(--glass); border: 1px solid var(--glass-border); border-radius: var(--radius);
-      padding: 1.75rem; transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    /* ─── FEATURED OFFERS ─── */
+    .featured-section .sec-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3rem; flex-wrap: wrap; gap: 1.5rem; }
+    .see-all {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-dim);
+      padding-bottom: .15rem; transition: all var(--transition);
+    }
+    .see-all:hover { color: var(--gold-light); border-color: var(--gold); }
+
+    .offers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .offer-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      overflow: hidden; display: flex; flex-direction: column;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
       backdrop-filter: blur(8px);
     }
-    .offer-row:hover { border-color: var(--glass-border-bright); transform: translateX(4px); box-shadow: 0 8px 40px rgba(0,0,0,.3); }
-    .offer-row.top-pick { border-color: rgba(201,168,76,.18); }
-    .offer-row.top-pick:hover { border-color: rgba(201,168,76,.32); }
-
-    .offer-icon { width: 68px; height: 68px; border-radius: var(--radius-sm); background: var(--layer); border: 1px solid var(--glass-border); display: grid; place-items: center; font-size: 1.75rem; flex-shrink: 0; }
-    .offer-main { min-width: 0; }
-    .offer-row-top { display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; flex-wrap: wrap; }
-    .offer-name-text { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--text); }
-    .badge-pick { font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .22rem .6rem; border-radius: 50px; background: var(--gold-dim); color: var(--gold); border: 1px solid rgba(201,168,76,.22); }
-    .offer-row-cat { font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); margin-bottom: .65rem; }
-    .offer-row-desc { font-size: .875rem; color: var(--text-muted); line-height: 1.65; }
-    .offer-row-meta { display: flex; align-items: center; gap: 1rem; margin-top: .85rem; flex-wrap: wrap; }
+    .offer-card:hover {
+      border-color: var(--glass-border-bright);
+      transform: translateY(-5px);
+      box-shadow: 0 24px 64px rgba(0,0,0,.5), 0 0 0 1px rgba(201,168,76,.07);
+    }
+    .offer-card.wide { grid-column: span 2; flex-direction: row; }
+    .card-visual {
+      background: var(--layer); padding: 2rem;
+      display: flex; flex-direction: column; justify-content: space-between;
+      position: relative; overflow: hidden;
+    }
+    .card-visual::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .offer-card.wide .card-visual { min-height: 260px; flex: 0 0 200px; }
+    .offer-card:not(.wide) .card-visual { min-height: 130px; }
+    .offer-badge-pill {
+      display: inline-flex; align-items: center; gap: .35rem;
+      font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      padding: .28rem .7rem; border-radius: 50px;
+      background: var(--gold-dim); color: var(--gold);
+      border: 1px solid rgba(201,168,76,.22);
+      align-self: flex-start;
+    }
+    .card-emoji { font-size: 2.25rem; margin-top: auto; padding-top: .75rem; display: block; }
+    .card-info { padding: 1.5rem; display: flex; flex-direction: column; gap: .75rem; flex: 1; }
+    .offer-cat { font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--text-faint); }
+    .offer-name { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; line-height: 1.2; color: var(--text); }
+    .offer-card.wide .offer-name { font-size: 1.5rem; }
+    .offer-desc { font-size: .875rem; color: var(--text-muted); line-height: 1.65; }
+    .offer-meta { display: flex; align-items: center; gap: .75rem; margin-top: auto; padding-top: .5rem; }
     .rating { font-size: .8rem; color: var(--text-muted); display: flex; align-items: center; gap: .3rem; }
     .stars { color: var(--gold); letter-spacing: -.05em; }
     .perk { font-size: .72rem; font-weight: 600; color: var(--teal); background: var(--teal-dim); padding: .2rem .6rem; border-radius: 50px; }
-    .tag { font-size: .68rem; font-weight: 600; padding: .2rem .55rem; border-radius: 50px; background: var(--glass); color: var(--text-faint); border: 1px solid var(--glass-border); }
-
-    .offer-cta-wrap { flex-shrink: 0; }
-    .offer-cta {
-      display: inline-flex; align-items: center; gap: .5rem;
-      background: var(--gold); color: var(--void);
-      padding: .75rem 1.5rem; border-radius: 50px;
-      font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
-      text-decoration: none; transition: all var(--transition); white-space: nowrap;
+    .card-cta {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.5rem; border-top: 1px solid var(--glass-border);
+      text-decoration: none; color: var(--text-muted);
+      font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      transition: all var(--transition);
     }
-    .offer-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
-    .offer-cta svg { transition: transform var(--transition); }
-    .offer-cta:hover svg { transform: translateX(3px); }
+    .card-cta:hover { color: var(--gold); background: var(--gold-glow); }
+    .card-cta svg { transition: transform var(--transition); }
+    .card-cta:hover svg { transform: translateX(4px); }
 
-    /* DISCLOSURE + FOOTER (shared) */
-    .disclosure-bar { background: var(--deep); border-top: 1px solid var(--glass-border); padding: 1.25rem clamp(1.5rem, 5vw, 4rem); text-align: center; font-size: .8rem; color: var(--text-faint); line-height: 1.65; }
+    /* ─── PROCESS ─── */
+    .process-section {
+      background: var(--deep);
+      border-top: 1px solid var(--glass-border);
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .process-card { padding: 2rem; background: var(--glass); border-radius: var(--radius); border: 1px solid var(--glass-border); transition: border-color var(--transition); }
+    .process-card:hover { border-color: var(--glass-border-bright); }
+    .step-num { font-family: var(--font-display); font-size: 3rem; font-weight: 900; color: var(--text-faint); line-height: 1; margin-bottom: 1.25rem; }
+    .step-title { font-size: .9375rem; font-weight: 700; color: var(--text); margin-bottom: .5rem; }
+    .step-desc { font-size: .875rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ─── EDITORIAL ─── */
+    .editorial-section .inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .editorial-block {
+      aspect-ratio: 5/4; background: var(--layer); border-radius: var(--radius);
+      border: 1px solid var(--glass-border); padding: 2.5rem;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      overflow: hidden; position: relative;
+    }
+    .editorial-block::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,.07) 0%, transparent 70%);
+    }
+    .ed-tag { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; position: relative; }
+    .ed-quote { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; font-style: italic; color: var(--text); line-height: 1.35; position: relative; }
+    .editorial-copy h2 { margin-bottom: 1.25rem; }
+    .check-list { list-style: none; margin-top: 1.75rem; display: flex; flex-direction: column; gap: .85rem; }
+    .check-list li { display: flex; align-items: flex-start; gap: .75rem; font-size: .875rem; color: var(--text-muted); line-height: 1.6; }
+    .check-list li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: .6rem; }
+
+    /* ─── TRUST BAR ─── */
+    .trust-bar { padding: 3rem clamp(1.5rem, 5vw, 4rem); border-top: 1px solid var(--glass-border); }
+    .trust-row { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 3rem; }
+    .trust-item { display: flex; flex-direction: column; align-items: center; gap: .35rem; }
+    .trust-ico { font-size: 1.35rem; }
+    .trust-lbl { font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); }
+
+    /* ─── DISCLOSURE ─── */
+    .disclosure-bar {
+      background: var(--deep); border-top: 1px solid var(--glass-border);
+      padding: 1.25rem clamp(1.5rem, 5vw, 4rem); text-align: center;
+      font-size: .8rem; color: var(--text-faint); line-height: 1.65;
+    }
     .disclosure-bar a { color: var(--gold); text-decoration: none; }
+    .disclosure-bar a:hover { color: var(--gold-light); }
+
+    /* ─── FOOTER ─── */
     footer { background: var(--deep); border-top: 1px solid var(--glass-border); padding: 4rem clamp(1.5rem, 5vw, 4rem) 2rem; }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; max-width: 860px; }
     .f-brand-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--text); margin-bottom: .5rem; }
@@ -113,21 +311,28 @@
     .f-links a:hover { color: var(--text); }
     .footer-bottom { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--glass-border); font-size: .75rem; color: var(--text-faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
 
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 960px) {
       .nav-center { display: none; }
-      .offer-row { grid-template-columns: 68px 1fr; }
-      .offer-cta-wrap { grid-column: 2; }
+      .offers-grid { grid-template-columns: 1fr; }
+      .offer-card.wide { flex-direction: column; grid-column: span 1; }
+      .offer-card.wide .card-visual { flex: none; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .editorial-section .inner { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 600px) {
-      .offer-row { grid-template-columns: 1fr; }
-      .offer-icon { width: 52px; height: 52px; font-size: 1.4rem; }
+      .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+      .process-grid { grid-template-columns: 1fr; }
     }
 
-    .offer-row { animation: fadeUp .4s both; }
-    .offer-row:nth-child(2) { animation-delay: .07s; }
-    .offer-row:nth-child(3) { animation-delay: .14s; }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    /* ─── PAGE LOAD ANIMATION ─── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-eyebrow { animation: fadeUp .6s .1s both; }
+    h1             { animation: fadeUp .7s .22s both; }
+    .hero-sub      { animation: fadeUp .6s .36s both; }
+    .hero-actions  { animation: fadeUp .6s .46s both; }
+    .hero-stats    { animation: fadeUp .6s .56s both; }
   </style>
 </head>
 <body>
@@ -135,118 +340,192 @@
 <nav>
   <a href="/" class="nav-logo">Outreach<em>Go</em></a>
   <ul class="nav-center">
-    <li><a href="/offers" class="active">Offers</a></li>
+    <li><a href="/offers">Offers</a></li>
     <li><a href="/disclosure">Disclosure</a></li>
     <li><a href="/privacy">Privacy</a></li>
   </ul>
-  <a href="/" class="nav-back">
-    <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-    Home
-  </a>
+  <a href="/offers" class="nav-cta">Browse Offers <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
 </nav>
 
-<div class="page-header">
-  <div class="ph-inner">
-    <div class="kicker">All Offers</div>
-    <h1>Top Picks<br/>for <em>2025</em></h1>
-    <p class="page-desc">Every platform here is independently reviewed. We earn a commission if you purchase — at no cost to you, ever.</p>
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Curated Business Intelligence</div>
+    <h1>The tools that<br/><em>move the needle.</em></h1>
+    <p class="hero-sub">We cut through vendor noise and market saturation to surface the platforms that consistently deliver — for operators, founders, and growing teams.</p>
+    <div class="hero-actions">
+      <a href="/offers" class="btn-primary">
+        Explore Top Offers
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#methodology" class="btn-ghost">
+        Our methodology
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-val">3+</div><div class="stat-lbl">Curated Platforms</div></div>
+      <div><div class="stat-val">100%</div><div class="stat-lbl">Independent Review</div></div>
+      <div><div class="stat-val">Free</div><div class="stat-lbl">To Browse</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TICKER ── -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner">
+    <span class="t-item"><span class="t-dot"></span>ClickFunnels — Funnel Builder</span>
+    <span class="t-item"><span class="t-dot"></span>Fiverr — Freelance Marketplace</span>
+    <span class="t-item"><span class="t-dot"></span>Monday.com — Project Management</span>
+    <span class="t-item"><span class="t-dot"></span>Free Trials Available</span>
+    <span class="t-item"><span class="t-dot"></span>Independently Reviewed</span>
+    <span class="t-item"><span class="t-dot"></span>No Hidden Costs</span>
+    <span class="t-item"><span class="t-dot"></span>ClickFunnels — Funnel Builder</span>
+    <span class="t-item"><span class="t-dot"></span>Fiverr — Freelance Marketplace</span>
+    <span class="t-item"><span class="t-dot"></span>Monday.com — Project Management</span>
+    <span class="t-item"><span class="t-dot"></span>Free Trials Available</span>
+    <span class="t-item"><span class="t-dot"></span>Independently Reviewed</span>
+    <span class="t-item"><span class="t-dot"></span>No Hidden Costs</span>
   </div>
 </div>
 
-<div class="filter-bar">
-  <button class="filter-btn active" data-filter="all">All Categories</button>
-  <button class="filter-btn" data-filter="sales">Sales & Funnels</button>
-  <button class="filter-btn" data-filter="freelance">Freelance</button>
-  <button class="filter-btn" data-filter="pm">Project Management</button>
-</div>
+<!-- ── FEATURED OFFERS ── -->
+<section class="featured-section">
+  <div class="sec-head">
+    <div>
+      <div class="kicker">Featured Picks</div>
+      <h2>Hand-selected for <em>real performance</em></h2>
+      <p class="sec-sub">Every platform is reviewed for quality, track record, and actual value delivered to teams like yours.</p>
+    </div>
+    <a href="/offers" class="see-all">All offers <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  </div>
 
-<section class="offers-section">
-  <div class="offers-list" id="offers-list">
+  <div class="offers-grid">
 
-    <div class="offer-row top-pick" data-cat="pm">
-      <div class="offer-icon">📋</div>
-      <div class="offer-main">
-        <div class="offer-row-top">
-          <div class="offer-name-text">Monday.com</div>
-          <span class="badge-pick">⭐ Editor's Pick</span>
-        </div>
-        <div class="offer-row-cat">Project Management</div>
-        <p class="offer-row-desc">The work OS trusted by 200,000+ companies. Unified workflows, automations, and real-time dashboards that teams actually adopt long term. Scalable from solopreneur to enterprise.</p>
-        <div class="offer-row-meta">
-          <div class="rating"><span class="stars">★★★★★</span> 4.9 / 5</div>
-          <div class="perk">Free plan available</div>
-          <div class="tag">Automation</div>
-          <div class="tag">Team Workflows</div>
-        </div>
+    <!-- Monday — wide/featured -->
+    <div class="offer-card wide">
+      <div class="card-visual">
+        <div class="offer-badge-pill">⭐ Editor's Pick</div>
+        <span class="card-emoji">📋</span>
       </div>
-      <div class="offer-cta-wrap">
-        <a href="https://go.outreachgo.net/monday" class="offer-cta" rel="noopener">
+      <div style="display:flex;flex-direction:column;flex:1;min-width:0;">
+        <div class="card-info">
+          <div class="offer-cat">Project Management</div>
+          <div class="offer-name">Monday.com</div>
+          <p class="offer-desc">The work OS trusted by 200,000+ companies worldwide. Unify teams with visual workflows, automations, and real-time dashboards that actually get adopted — not abandoned after week one.</p>
+          <div class="offer-meta">
+            <div class="rating"><span class="stars">★★★★★</span> 4.9</div>
+            <div class="perk">Free plan available</div>
+          </div>
+        </div>
+        <a href="https://go.outreachgo.net/monday" class="card-cta" rel="noopener">
           View Offer
-          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
     </div>
 
-    <div class="offer-row" data-cat="sales">
-      <div class="offer-icon">🚀</div>
-      <div class="offer-main">
-        <div class="offer-row-top">
-          <div class="offer-name-text">ClickFunnels</div>
-        </div>
-        <div class="offer-row-cat">Sales & Funnels</div>
-        <p class="offer-row-desc">Build high-converting sales funnels, membership sites, and landing pages without writing code. Used by 100,000+ entrepreneurs. Handles the complete revenue funnel from opt-in to upsell.</p>
-        <div class="offer-row-meta">
-          <div class="rating"><span class="stars">★★★★★</span> 4.8 / 5</div>
-          <div class="perk">14-day free trial</div>
-          <div class="tag">E-commerce</div>
-          <div class="tag">Landing Pages</div>
+    <!-- ClickFunnels -->
+    <div class="offer-card">
+      <div class="card-visual">
+        <span class="card-emoji">🚀</span>
+      </div>
+      <div class="card-info">
+        <div class="offer-cat">Sales & Funnels</div>
+        <div class="offer-name">ClickFunnels</div>
+        <p class="offer-desc">Build complete sales funnels without code. Opt-ins, upsells, memberships — the full revenue flow handled in one platform.</p>
+        <div class="offer-meta">
+          <div class="rating"><span class="stars">★★★★★</span> 4.8</div>
+          <div class="perk">14-day trial</div>
         </div>
       </div>
-      <div class="offer-cta-wrap">
-        <a href="https://go.outreachgo.net/clickfunnels" class="offer-cta" rel="noopener">
-          View Offer
-          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
+      <a href="https://go.outreachgo.net/clickfunnels" class="card-cta" rel="noopener">
+        View Offer
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
 
-    <div class="offer-row" data-cat="freelance">
-      <div class="offer-icon">🎨</div>
-      <div class="offer-main">
-        <div class="offer-row-top">
-          <div class="offer-name-text">Fiverr Business</div>
-        </div>
-        <div class="offer-row-cat">Freelance Marketplace</div>
-        <p class="offer-row-desc">Access 700+ categories of professional services — design, development, marketing, and copywriting. Scale your team on demand with vetted freelancers, without agency overhead or long-term contracts.</p>
-        <div class="offer-row-meta">
-          <div class="rating"><span class="stars">★★★★★</span> 4.7 / 5</div>
+    <!-- Fiverr -->
+    <div class="offer-card">
+      <div class="card-visual">
+        <span class="card-emoji">🎨</span>
+      </div>
+      <div class="card-info">
+        <div class="offer-cat">Freelance Marketplace</div>
+        <div class="offer-name">Fiverr Business</div>
+        <p class="offer-desc">700+ categories. Professional talent for design, dev, content, and marketing — without the overhead of an agency.</p>
+        <div class="offer-meta">
+          <div class="rating"><span class="stars">★★★★★</span> 4.7</div>
           <div class="perk">Pay per project</div>
-          <div class="tag">Design</div>
-          <div class="tag">Marketing</div>
-          <div class="tag">Development</div>
         </div>
       </div>
-      <div class="offer-cta-wrap">
-        <a href="https://go.outreachgo.net/fiverr" class="offer-cta" rel="noopener">
-          View Offer
-          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
+      <a href="https://go.outreachgo.net/fiverr" class="card-cta" rel="noopener">
+        View Offer
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
 
   </div>
 </section>
 
+<!-- ── PROCESS ── -->
+<section class="process-section" id="methodology">
+  <div class="kicker">Our Process</div>
+  <h2>What earns a spot here</h2>
+  <div class="process-grid">
+    <div class="process-card"><div class="step-num">01</div><div class="step-title">Market Research</div><p class="step-desc">We map the landscape, analyze user sentiment across review platforms, and separate signal from marketing noise.</p></div>
+    <div class="process-card"><div class="step-num">02</div><div class="step-title">Practitioner Review</div><p class="step-desc">Real operators test each platform for reliability, workflow fit, support responsiveness, and pricing transparency.</p></div>
+    <div class="process-card"><div class="step-num">03</div><div class="step-title">Value Scoring</div><p class="step-desc">Features, pricing, onboarding quality, and ROI potential are scored. Only platforms above threshold are listed.</p></div>
+    <div class="process-card"><div class="step-num">04</div><div class="step-title">Ongoing Audit</div><p class="step-desc">We monitor platform changes, user feedback, and pricing shifts. Listings that no longer qualify are removed.</p></div>
+  </div>
+</section>
+
+<!-- ── EDITORIAL ── -->
+<section class="editorial-section">
+  <div class="inner">
+    <div class="editorial-block">
+      <div class="ed-tag">Our Philosophy</div>
+      <div class="ed-quote">"Recommending the wrong tool is more costly than recommending none."</div>
+    </div>
+    <div class="editorial-copy">
+      <div class="kicker">Why We Exist</div>
+      <h2>Cut the noise.<br/><em>Find what works.</em></h2>
+      <p class="sec-sub">The B2B software market is saturated with paid placement, inflated reviews, and aggressive upsell cycles. We operate on different terms.</p>
+      <ul class="check-list">
+        <li>No tool pays to be featured on this site</li>
+        <li>Editorial decisions are made independently of commission potential</li>
+        <li>Pricing and feature claims are verified before publishing</li>
+        <li>Our affiliate disclosure is clear, prominent, and FTC-compliant</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST BAR ── -->
+<div class="trust-bar">
+  <div class="trust-row">
+    <div class="trust-item"><div class="trust-ico">🔍</div><div class="trust-lbl">Independently Reviewed</div></div>
+    <div class="trust-item"><div class="trust-ico">📋</div><div class="trust-lbl">FTC Compliant</div></div>
+    <div class="trust-item"><div class="trust-ico">🔄</div><div class="trust-lbl">Regularly Audited</div></div>
+    <div class="trust-item"><div class="trust-ico">🔒</div><div class="trust-lbl">No Data Selling</div></div>
+    <div class="trust-item"><div class="trust-ico">✅</div><div class="trust-lbl">Free to Browse</div></div>
+  </div>
+</div>
+
+<!-- ── DISCLOSURE ── -->
 <div class="disclosure-bar">
-  <strong style="color:var(--text-muted)">Affiliate Disclosure:</strong> OutreachGo may earn a commission when you click links and make a purchase. This never affects your price or our editorial independence.
+  <strong style="color:var(--text-muted)">Affiliate Disclosure:</strong> OutreachGo may earn a commission when you click a link and make a purchase. This never affects your price or our editorial independence.
   <a href="/disclosure"> Read full disclosure →</a>
 </div>
 
+<!-- ── FOOTER ── -->
 <footer>
   <div class="footer-grid">
     <div>
       <div class="f-brand-name">Outreach<em>Go</em></div>
-      <p class="f-desc">Independently curated business tools for operators, founders, and modern teams.</p>
+      <p class="f-desc">Independently curated business tools for operators, founders, and modern teams. We research so you don't have to.</p>
     </div>
     <div>
       <div class="f-col-title">Navigation</div>
@@ -270,19 +549,5 @@
   </div>
 </footer>
 
-<script>
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const offerRows  = document.querySelectorAll('.offer-row');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const f = btn.dataset.filter;
-      offerRows.forEach(row => {
-        row.style.display = (f === 'all' || row.dataset.cat === f) ? '' : 'none';
-      });
-    });
-  });
-</script>
 </body>
 </html>
