@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Top Offers — OutreachGo</title>
+  <meta name="description" content="Browse hand-selected, independently reviewed business platforms. No paid placements."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --void: #080910; --deep: #0e1018; --layer: #13151f;
+      --glass: rgba(255,255,255,.035);
+      --glass-border: rgba(255,255,255,.075);
+      --glass-border-bright: rgba(255,255,255,.13);
+      --text: #e8e8ee; --text-muted: #7a7a96; --text-faint: #3e3e58;
+      --gold: #c9a84c; --gold-light: #e8ca78;
+      --gold-dim: rgba(201,168,76,.12); --gold-glow: rgba(201,168,76,.06);
+      --teal: #3ecfb2; --teal-dim: rgba(62,207,178,.1);
+      --radius: 16px; --radius-sm: 10px;
+      --transition: 0.24s cubic-bezier(.4,0,.2,1);
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Syne', sans-serif;
+    }
+    html { scroll-behavior: smooth; background: var(--void); }
+    body { font-family: var(--font-body); background: var(--void); color: var(--text); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(1.5rem, 5vw, 4rem); height: 68px; background: rgba(8,9,16,.75); backdrop-filter: blur(24px) saturate(1.6); border-bottom: 1px solid var(--glass-border); }
+    .nav-logo { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; letter-spacing: -.01em; color: var(--text); text-decoration: none; }
+    .nav-logo em { font-style: italic; color: var(--gold); }
+    .nav-center { display: flex; gap: 2.5rem; list-style: none; position: absolute; left: 50%; transform: translateX(-50%); }
+    .nav-center a { font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color var(--transition); }
+    .nav-center a:hover, .nav-center a.active { color: var(--gold); }
+    .nav-back { display: inline-flex; align-items: center; gap: .4rem; font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color var(--transition); }
+    .nav-back:hover { color: var(--text); }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: calc(68px + 4rem) clamp(1.5rem, 5vw, 4rem) 3rem;
+      position: relative; overflow: hidden;
+    }
+    .page-header::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,168,76,.07) 0%, transparent 70%);
+    }
+    .ph-inner { max-width: 700px; position: relative; }
+    .kicker { display: inline-flex; align-items: center; gap: .5rem; font-size: .7rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .kicker::after { content: ''; display: block; width: 22px; height: 1px; background: var(--gold); }
+    h1 { font-family: var(--font-display); font-size: clamp(2.25rem, 5vw, 4rem); font-weight: 900; line-height: 1.05; letter-spacing: -.02em; color: var(--text); margin-bottom: .75rem; }
+    h1 em { font-style: italic; color: var(--gold); }
+    .page-desc { font-size: .9375rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* FILTER BAR */
+    .filter-bar { padding: 0 clamp(1.5rem, 5vw, 4rem) 2rem; display: flex; gap: .5rem; flex-wrap: wrap; border-bottom: 1px solid var(--glass-border); }
+    .filter-btn { padding: .45rem 1.1rem; border-radius: 50px; border: 1px solid var(--glass-border); background: transparent; color: var(--text-muted); font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; transition: all var(--transition); font-family: var(--font-body); }
+    .filter-btn:hover { border-color: var(--glass-border-bright); color: var(--text); }
+    .filter-btn.active { background: var(--gold-dim); color: var(--gold); border-color: rgba(201,168,76,.3); }
+
+    /* OFFERS */
+    .offers-section { padding: 3rem clamp(1.5rem, 5vw, 4rem) 6rem; }
+    .offers-list { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .offer-row {
+      display: grid; grid-template-columns: 80px 1fr auto;
+      align-items: center; gap: 2rem;
+      background: var(--glass); border: 1px solid var(--glass-border); border-radius: var(--radius);
+      padding: 1.75rem; transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+      backdrop-filter: blur(8px);
+    }
+    .offer-row:hover { border-color: var(--glass-border-bright); transform: translateX(4px); box-shadow: 0 8px 40px rgba(0,0,0,.3); }
+    .offer-row.top-pick { border-color: rgba(201,168,76,.18); }
+    .offer-row.top-pick:hover { border-color: rgba(201,168,76,.32); }
+
+    .offer-icon { width: 68px; height: 68px; border-radius: var(--radius-sm); background: var(--layer); border: 1px solid var(--glass-border); display: grid; place-items: center; font-size: 1.75rem; flex-shrink: 0; }
+    .offer-main { min-width: 0; }
+    .offer-row-top { display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; flex-wrap: wrap; }
+    .offer-name-text { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--text); }
+    .badge-pick { font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .22rem .6rem; border-radius: 50px; background: var(--gold-dim); color: var(--gold); border: 1px solid rgba(201,168,76,.22); }
+    .offer-row-cat { font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); margin-bottom: .65rem; }
+    .offer-row-desc { font-size: .875rem; color: var(--text-muted); line-height: 1.65; }
+    .offer-row-meta { display: flex; align-items: center; gap: 1rem; margin-top: .85rem; flex-wrap: wrap; }
+    .rating { font-size: .8rem; color: var(--text-muted); display: flex; align-items: center; gap: .3rem; }
+    .stars { color: var(--gold); letter-spacing: -.05em; }
+    .perk { font-size: .72rem; font-weight: 600; color: var(--teal); background: var(--teal-dim); padding: .2rem .6rem; border-radius: 50px; }
+    .tag { font-size: .68rem; font-weight: 600; padding: .2rem .55rem; border-radius: 50px; background: var(--glass); color: var(--text-faint); border: 1px solid var(--glass-border); }
+
+    .offer-cta-wrap { flex-shrink: 0; }
+    .offer-cta {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--gold); color: var(--void);
+      padding: .75rem 1.5rem; border-radius: 50px;
+      font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      text-decoration: none; transition: all var(--transition); white-space: nowrap;
+    }
+    .offer-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .offer-cta svg { transition: transform var(--transition); }
+    .offer-cta:hover svg { transform: translateX(3px); }
+
+    /* DISCLOSURE + FOOTER (shared) */
+    .disclosure-bar { background: var(--deep); border-top: 1px solid var(--glass-border); padding: 1.25rem clamp(1.5rem, 5vw, 4rem); text-align: center; font-size: .8rem; color: var(--text-faint); line-height: 1.65; }
+    .disclosure-bar a { color: var(--gold); text-decoration: none; }
+    footer { background: var(--deep); border-top: 1px solid var(--glass-border); padding: 4rem clamp(1.5rem, 5vw, 4rem) 2rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; max-width: 860px; }
+    .f-brand-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--text); margin-bottom: .5rem; }
+    .f-brand-name em { font-style: italic; color: var(--gold); }
+    .f-desc { font-size: .8rem; color: var(--text-faint); line-height: 1.65; max-width: 260px; }
+    .f-col-title { font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 1rem; }
+    .f-links { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+    .f-links a { font-size: .8rem; color: var(--text-muted); text-decoration: none; transition: color var(--transition); }
+    .f-links a:hover { color: var(--text); }
+    .footer-bottom { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--glass-border); font-size: .75rem; color: var(--text-faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
+
+    @media (max-width: 960px) {
+      .nav-center { display: none; }
+      .offer-row { grid-template-columns: 68px 1fr; }
+      .offer-cta-wrap { grid-column: 2; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .offer-row { grid-template-columns: 1fr; }
+      .offer-icon { width: 52px; height: 52px; font-size: 1.4rem; }
+    }
+
+    .offer-row { animation: fadeUp .4s both; }
+    .offer-row:nth-child(2) { animation-delay: .07s; }
+    .offer-row:nth-child(3) { animation-delay: .14s; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Outreach<em>Go</em></a>
+  <ul class="nav-center">
+    <li><a href="/offers" class="active">Offers</a></li>
+    <li><a href="/disclosure">Disclosure</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+  </ul>
+  <a href="/" class="nav-back">
+    <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Home
+  </a>
+</nav>
+
+<div class="page-header">
+  <div class="ph-inner">
+    <div class="kicker">All Offers</div>
+    <h1>Top Picks<br/>for <em>2025</em></h1>
+    <p class="page-desc">Every platform here is independently reviewed. We earn a commission if you purchase — at no cost to you, ever.</p>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" data-filter="all">All Categories</button>
+  <button class="filter-btn" data-filter="sales">Sales & Funnels</button>
+  <button class="filter-btn" data-filter="freelance">Freelance</button>
+  <button class="filter-btn" data-filter="pm">Project Management</button>
+</div>
+
+<section class="offers-section">
+  <div class="offers-list" id="offers-list">
+
+    <div class="offer-row top-pick" data-cat="pm">
+      <div class="offer-icon">📋</div>
+      <div class="offer-main">
+        <div class="offer-row-top">
+          <div class="offer-name-text">Monday.com</div>
+          <span class="badge-pick">⭐ Editor's Pick</span>
+        </div>
+        <div class="offer-row-cat">Project Management</div>
+        <p class="offer-row-desc">The work OS trusted by 200,000+ companies. Unified workflows, automations, and real-time dashboards that teams actually adopt long term. Scalable from solopreneur to enterprise.</p>
+        <div class="offer-row-meta">
+          <div class="rating"><span class="stars">★★★★★</span> 4.9 / 5</div>
+          <div class="perk">Free plan available</div>
+          <div class="tag">Automation</div>
+          <div class="tag">Team Workflows</div>
+        </div>
+      </div>
+      <div class="offer-cta-wrap">
+        <a href="https://go.outreachgo.net/monday" class="offer-cta" rel="noopener">
+          View Offer
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="offer-row" data-cat="sales">
+      <div class="offer-icon">🚀</div>
+      <div class="offer-main">
+        <div class="offer-row-top">
+          <div class="offer-name-text">ClickFunnels</div>
+        </div>
+        <div class="offer-row-cat">Sales & Funnels</div>
+        <p class="offer-row-desc">Build high-converting sales funnels, membership sites, and landing pages without writing code. Used by 100,000+ entrepreneurs. Handles the complete revenue funnel from opt-in to upsell.</p>
+        <div class="offer-row-meta">
+          <div class="rating"><span class="stars">★★★★★</span> 4.8 / 5</div>
+          <div class="perk">14-day free trial</div>
+          <div class="tag">E-commerce</div>
+          <div class="tag">Landing Pages</div>
+        </div>
+      </div>
+      <div class="offer-cta-wrap">
+        <a href="https://go.outreachgo.net/clickfunnels" class="offer-cta" rel="noopener">
+          View Offer
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="offer-row" data-cat="freelance">
+      <div class="offer-icon">🎨</div>
+      <div class="offer-main">
+        <div class="offer-row-top">
+          <div class="offer-name-text">Fiverr Business</div>
+        </div>
+        <div class="offer-row-cat">Freelance Marketplace</div>
+        <p class="offer-row-desc">Access 700+ categories of professional services — design, development, marketing, and copywriting. Scale your team on demand with vetted freelancers, without agency overhead or long-term contracts.</p>
+        <div class="offer-row-meta">
+          <div class="rating"><span class="stars">★★★★★</span> 4.7 / 5</div>
+          <div class="perk">Pay per project</div>
+          <div class="tag">Design</div>
+          <div class="tag">Marketing</div>
+          <div class="tag">Development</div>
+        </div>
+      </div>
+      <div class="offer-cta-wrap">
+        <a href="https://go.outreachgo.net/fiverr" class="offer-cta" rel="noopener">
+          View Offer
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="disclosure-bar">
+  <strong style="color:var(--text-muted)">Affiliate Disclosure:</strong> OutreachGo may earn a commission when you click links and make a purchase. This never affects your price or our editorial independence.
+  <a href="/disclosure"> Read full disclosure →</a>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="f-brand-name">Outreach<em>Go</em></div>
+      <p class="f-desc">Independently curated business tools for operators, founders, and modern teams.</p>
+    </div>
+    <div>
+      <div class="f-col-title">Navigation</div>
+      <ul class="f-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/offers">Top Offers</a></li>
+        <li><a href="/disclosure">Disclosure</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="f-col-title">Legal</div>
+      <ul class="f-links">
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="/delete-data">Delete My Data</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 OutreachGo — outreachgo.net</span>
+    <span>All rights reserved</span>
+  </div>
+</footer>
+
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const offerRows  = document.querySelectorAll('.offer-row');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      offerRows.forEach(row => {
+        row.style.display = (f === 'all' || row.dataset.cat === f) ? '' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>
