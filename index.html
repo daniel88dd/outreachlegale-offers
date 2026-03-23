@@ -1,1104 +1,288 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Premium ClickBank affiliate offers - expertly curated selection with transparent tracking">
-  <title>OutreachLegale — Premium Affiliate Intelligence Platform</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Top Offers — OutreachGo</title>
+  <meta name="description" content="Browse hand-selected, independently reviewed business platforms. No paid placements."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-    }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --primary: #1a56db;
-      --primary-dark: #1e429f;
-      --primary-light: #e1effe;
-      --secondary: #7e3af2;
-      --accent: #0e9f6e;
-      --accent-light: #def7ec;
-      --dark: #111827;
-      --dark-light: #374151;
-      --light: #f9fafb;
-      --muted: #6b7280;
-      --border: #e5e7eb;
-      --bg: #ffffff;
-      --card-bg: #ffffff;
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      --radius-sm: 8px;
-      --radius: 12px;
-      --radius-lg: 16px;
-      --radius-xl: 20px;
-      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--dark);
-      line-height: 1.6;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    /* Header */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(229, 231, 235, 0.8);
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-    }
-
-    .header-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 0;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    .logo-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-      border-radius: var(--radius);
-      color: white;
-      font-size: 18px;
-    }
-
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .logo-main {
-      color: var(--primary);
-      font-weight: 900;
-      font-size: 22px;
-      letter-spacing: -0.5px;
-      line-height: 1;
-    }
-
-    .logo-sub {
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      margin-top: 2px;
-    }
-
-    .nav {
-      display: flex;
-      gap: 4px;
-      flex-wrap: wrap;
-    }
-
-    .nav a {
-      color: var(--dark);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 14px;
-      padding: 10px 16px;
-      border-radius: var(--radius);
-      transition: var(--transition);
-      position: relative;
-    }
-
-    .nav a:hover {
-      background: var(--primary-light);
-      color: var(--primary);
-    }
-
-    .nav a.active {
-      background: var(--primary);
-      color: white;
-      box-shadow: var(--shadow);
-    }
-
-    .nav a.active:after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 6px;
-      height: 6px;
-      background: var(--primary);
-      border-radius: 50%;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* Hero */
-    .hero {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-      color: white;
-      padding: 120px 0 100px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-    }
-
-    .hero-content {
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero h1 {
-      font-size: 48px;
-      line-height: 1.1;
-      margin-bottom: 20px;
-      font-weight: 900;
-      letter-spacing: -0.025em;
-    }
-
-    .hero-subtitle {
-      font-size: 20px;
-      line-height: 1.5;
-      margin-bottom: 32px;
-      color: rgba(255, 255, 255, 0.9);
-      font-weight: 400;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .cta-row {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 40px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      background: var(--accent);
-      color: white;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 16px;
-      padding: 16px 28px;
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-lg);
-      transition: var(--transition);
-      border: none;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn:after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: left 0.7s ease;
-    }
-
-    .btn:hover:after { left: 100%; }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-xl);
-      filter: brightness(1.05);
-    }
-
-    .btn-primary {
-      background: white;
-      color: var(--primary);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      color: white;
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.25);
-    }
-
-    .trust-badges {
-      display: flex;
-      gap: 32px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 40px;
-    }
-
-    .badge {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    .badge i {
-      font-size: 18px;
-      color: var(--accent-light);
-    }
-
-    /* Sections */
-    section { padding: 90px 0; }
-    .section-alt { background: var(--light); }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    .section-title h2 {
-      font-size: 36px;
-      margin-bottom: 12px;
-      font-weight: 800;
-      color: var(--dark);
-      letter-spacing: -0.025em;
-    }
-
-    .section-title p {
-      color: var(--muted);
-      max-width: 700px;
-      margin: 0 auto;
-      font-size: 18px;
-      line-height: 1.6;
-    }
-
-    /* Cards */
-    .offers-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 24px;
-      margin-top: 30px;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow);
-      padding: 24px;
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-
-      /* reveal baseline */
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    .card.reveal {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-xl);
-      border-color: var(--primary-light);
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 16px;
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 700;
-      font-size: 12px;
-      padding: 8px 14px;
-      border-radius: 100px;
-      background: var(--primary-light);
-      color: var(--primary);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .tag.green { background: var(--accent-light); color: #046c4e; }
-    .tag.purple { background: rgba(126, 58, 242, 0.1); color: var(--secondary); }
-    .tag.orange { background: rgba(245, 158, 11, 0.1); color: #92400e; }
-
-    .rating {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--dark-light);
-    }
-
-    .rating i { color: #fbbf24; }
-
-    .card h3 {
-      margin: 0 0 12px;
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--dark);
-      line-height: 1.3;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 15px;
-      margin-bottom: 20px;
-      line-height: 1.6;
-      flex-grow: 1;
-    }
-
-    .features {
-      list-style: none;
-      display: grid;
-      gap: 10px;
-      margin: 16px 0 24px;
-    }
-
-    .features li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      color: var(--dark);
-      font-size: 14px;
-    }
-
-    .features i {
-      color: var(--accent);
-      margin-top: 3px;
-      flex-shrink: 0;
-    }
-
-    .card-actions {
-      display: flex;
-      gap: 12px;
-      margin-top: auto;
-    }
-
-    .card-actions a { flex: 1; min-width: 140px; }
-
-    .btn-card {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: var(--primary);
-      color: white;
-      text-decoration: none;
-      font-weight: 700;
-      padding: 14px 20px;
-      border-radius: var(--radius);
-      transition: var(--transition);
-    }
-
-    .btn-card:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
-    }
-
-    .btn-outline {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: white;
-      color: var(--dark);
-      text-decoration: none;
-      font-weight: 600;
-      padding: 14px 20px;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      transition: var(--transition);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-      background: var(--primary-light);
-    }
-
-    .affiliate-note {
-      margin-top: 16px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.5;
-      padding: 12px;
-      background: var(--light);
-      border-radius: var(--radius-sm);
-      border-left: 3px solid var(--accent);
-    }
-
-    /* FAQ */
-    .faq-container { max-width: 900px; margin: 0 auto; }
-
-    .faq-item {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      margin-bottom: 16px;
-      transition: var(--transition);
-
-      /* reveal baseline */
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    .faq-item.reveal {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    }
-
-    .faq-item:hover {
-      border-color: var(--primary-light);
-      box-shadow: var(--shadow);
-    }
-
-    .faq-question {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 22px 24px;
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 17px;
-      color: var(--dark);
-    }
-
-    .faq-question i {
-      color: var(--primary);
-      transition: var(--transition);
-    }
-
-    .faq-item.active .faq-question i { transform: rotate(45deg); }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      padding: 0 24px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .faq-item.active .faq-answer {
-      max-height: 300px;
-      padding: 0 24px 24px;
-    }
-
-    /* pulse */
-    .pulse { animation: pulse 2s infinite; }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(10, 149, 255, 0.4); }
-      70% { box-shadow: 0 0 0 10px rgba(10, 149, 255, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(10, 149, 255, 0); }
-    }
-
-    /* Footer */
-    footer {
-      background: var(--dark);
-      color: #d1d5db;
-      padding: 70px 0 30px;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 40px;
-      margin-bottom: 50px;
-    }
-
-    .footer-logo {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      max-width: 300px;
-    }
-
-    .footer-logo .logo { justify-content: flex-start; }
-
-    .footer-logo p {
-      font-size: 14px;
-      line-height: 1.6;
-      color: #9ca3af;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 60px;
-      flex-wrap: wrap;
-    }
-
-    .footer-col h4 {
-      color: white;
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 18px;
-      letter-spacing: 0.5px;
-    }
-
-    .footer-col ul { list-style: none; }
-    .footer-col li { margin-bottom: 10px; }
-
-    .footer-col a {
-      color: #9ca3af;
-      text-decoration: none;
-      font-size: 14px;
-      transition: var(--transition);
-    }
-
-    .footer-col a:hover { color: white; }
-
-    .disclaimer {
-      max-width: 1000px;
-      margin: 40px auto 0;
-      color: #9ca3af;
-      font-size: 13px;
-      line-height: 1.7;
-      padding-top: 30px;
-      border-top: 1px solid #374151;
-      text-align: center;
-      scroll-margin-top: 90px; /* nice anchor offset */
-    }
-
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .offers-container { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
-      .hero h1 { font-size: 40px; }
-    }
-
-    @media (max-width: 768px) {
-      .header-row {
-        flex-direction: column;
-        gap: 20px;
-        padding: 20px 0;
-      }
-
-      .nav { width: 100%; justify-content: center; }
-      .hero { padding: 80px 0 60px; }
-      .hero h1 { font-size: 32px; }
-      .hero-subtitle { font-size: 18px; }
-
-      .cta-row { flex-direction: column; align-items: center; }
-      .btn { width: 100%; max-width: 300px; }
-
-      .section-title h2 { font-size: 28px; }
-      section { padding: 60px 0; }
-
-      .footer-content { flex-direction: column; gap: 40px; }
-      .footer-links { gap: 40px; }
-    }
-
-    @media (max-width: 480px) {
-      .container { padding: 0 16px; }
-
-      .nav {
-        overflow-x: auto;
-        justify-content: flex-start;
-        padding-bottom: 10px;
-      }
-
-      .nav a { font-size: 13px; padding: 8px 12px; }
-      .offers-container { grid-template-columns: 1fr; }
-
-      .card-actions { flex-direction: column; }
-      .card-actions a { min-width: 100%; }
-    }
+      --void: #080910; --deep: #0e1018; --layer: #13151f;
+      --glass: rgba(255,255,255,.035);
+      --glass-border: rgba(255,255,255,.075);
+      --glass-border-bright: rgba(255,255,255,.13);
+      --text: #e8e8ee; --text-muted: #7a7a96; --text-faint: #3e3e58;
+      --gold: #c9a84c; --gold-light: #e8ca78;
+      --gold-dim: rgba(201,168,76,.12); --gold-glow: rgba(201,168,76,.06);
+      --teal: #3ecfb2; --teal-dim: rgba(62,207,178,.1);
+      --radius: 16px; --radius-sm: 10px;
+      --transition: 0.24s cubic-bezier(.4,0,.2,1);
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Syne', sans-serif;
+    }
+    html { scroll-behavior: smooth; background: var(--void); }
+    body { font-family: var(--font-body); background: var(--void); color: var(--text); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(1.5rem, 5vw, 4rem); height: 68px; background: rgba(8,9,16,.75); backdrop-filter: blur(24px) saturate(1.6); border-bottom: 1px solid var(--glass-border); }
+    .nav-logo { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; letter-spacing: -.01em; color: var(--text); text-decoration: none; }
+    .nav-logo em { font-style: italic; color: var(--gold); }
+    .nav-center { display: flex; gap: 2.5rem; list-style: none; position: absolute; left: 50%; transform: translateX(-50%); }
+    .nav-center a { font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color var(--transition); }
+    .nav-center a:hover, .nav-center a.active { color: var(--gold); }
+    .nav-back { display: inline-flex; align-items: center; gap: .4rem; font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color var(--transition); }
+    .nav-back:hover { color: var(--text); }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: calc(68px + 4rem) clamp(1.5rem, 5vw, 4rem) 3rem;
+      position: relative; overflow: hidden;
+    }
+    .page-header::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,168,76,.07) 0%, transparent 70%);
+    }
+    .ph-inner { max-width: 700px; position: relative; }
+    .kicker { display: inline-flex; align-items: center; gap: .5rem; font-size: .7rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .kicker::after { content: ''; display: block; width: 22px; height: 1px; background: var(--gold); }
+    h1 { font-family: var(--font-display); font-size: clamp(2.25rem, 5vw, 4rem); font-weight: 900; line-height: 1.05; letter-spacing: -.02em; color: var(--text); margin-bottom: .75rem; }
+    h1 em { font-style: italic; color: var(--gold); }
+    .page-desc { font-size: .9375rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* FILTER BAR */
+    .filter-bar { padding: 0 clamp(1.5rem, 5vw, 4rem) 2rem; display: flex; gap: .5rem; flex-wrap: wrap; border-bottom: 1px solid var(--glass-border); }
+    .filter-btn { padding: .45rem 1.1rem; border-radius: 50px; border: 1px solid var(--glass-border); background: transparent; color: var(--text-muted); font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; transition: all var(--transition); font-family: var(--font-body); }
+    .filter-btn:hover { border-color: var(--glass-border-bright); color: var(--text); }
+    .filter-btn.active { background: var(--gold-dim); color: var(--gold); border-color: rgba(201,168,76,.3); }
+
+    /* OFFERS */
+    .offers-section { padding: 3rem clamp(1.5rem, 5vw, 4rem) 6rem; }
+    .offers-list { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .offer-row {
+      display: grid; grid-template-columns: 80px 1fr auto;
+      align-items: center; gap: 2rem;
+      background: var(--glass); border: 1px solid var(--glass-border); border-radius: var(--radius);
+      padding: 1.75rem; transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+      backdrop-filter: blur(8px);
+    }
+    .offer-row:hover { border-color: var(--glass-border-bright); transform: translateX(4px); box-shadow: 0 8px 40px rgba(0,0,0,.3); }
+    .offer-row.top-pick { border-color: rgba(201,168,76,.18); }
+    .offer-row.top-pick:hover { border-color: rgba(201,168,76,.32); }
+
+    .offer-icon { width: 68px; height: 68px; border-radius: var(--radius-sm); background: var(--layer); border: 1px solid var(--glass-border); display: grid; place-items: center; font-size: 1.75rem; flex-shrink: 0; }
+    .offer-main { min-width: 0; }
+    .offer-row-top { display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; flex-wrap: wrap; }
+    .offer-name-text { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--text); }
+    .badge-pick { font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .22rem .6rem; border-radius: 50px; background: var(--gold-dim); color: var(--gold); border: 1px solid rgba(201,168,76,.22); }
+    .offer-row-cat { font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); margin-bottom: .65rem; }
+    .offer-row-desc { font-size: .875rem; color: var(--text-muted); line-height: 1.65; }
+    .offer-row-meta { display: flex; align-items: center; gap: 1rem; margin-top: .85rem; flex-wrap: wrap; }
+    .rating { font-size: .8rem; color: var(--text-muted); display: flex; align-items: center; gap: .3rem; }
+    .stars { color: var(--gold); letter-spacing: -.05em; }
+    .perk { font-size: .72rem; font-weight: 600; color: var(--teal); background: var(--teal-dim); padding: .2rem .6rem; border-radius: 50px; }
+    .tag { font-size: .68rem; font-weight: 600; padding: .2rem .55rem; border-radius: 50px; background: var(--glass); color: var(--text-faint); border: 1px solid var(--glass-border); }
+
+    .offer-cta-wrap { flex-shrink: 0; }
+    .offer-cta {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--gold); color: var(--void);
+      padding: .75rem 1.5rem; border-radius: 50px;
+      font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      text-decoration: none; transition: all var(--transition); white-space: nowrap;
+    }
+    .offer-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .offer-cta svg { transition: transform var(--transition); }
+    .offer-cta:hover svg { transform: translateX(3px); }
+
+    /* DISCLOSURE + FOOTER (shared) */
+    .disclosure-bar { background: var(--deep); border-top: 1px solid var(--glass-border); padding: 1.25rem clamp(1.5rem, 5vw, 4rem); text-align: center; font-size: .8rem; color: var(--text-faint); line-height: 1.65; }
+    .disclosure-bar a { color: var(--gold); text-decoration: none; }
+    footer { background: var(--deep); border-top: 1px solid var(--glass-border); padding: 4rem clamp(1.5rem, 5vw, 4rem) 2rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; max-width: 860px; }
+    .f-brand-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--text); margin-bottom: .5rem; }
+    .f-brand-name em { font-style: italic; color: var(--gold); }
+    .f-desc { font-size: .8rem; color: var(--text-faint); line-height: 1.65; max-width: 260px; }
+    .f-col-title { font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 1rem; }
+    .f-links { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+    .f-links a { font-size: .8rem; color: var(--text-muted); text-decoration: none; transition: color var(--transition); }
+    .f-links a:hover { color: var(--text); }
+    .footer-bottom { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--glass-border); font-size: .75rem; color: var(--text-faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
+
+    @media (max-width: 960px) {
+      .nav-center { display: none; }
+      .offer-row { grid-template-columns: 68px 1fr; }
+      .offer-cta-wrap { grid-column: 2; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .offer-row { grid-template-columns: 1fr; }
+      .offer-icon { width: 52px; height: 52px; font-size: 1.4rem; }
+    }
+
+    .offer-row { animation: fadeUp .4s both; }
+    .offer-row:nth-child(2) { animation-delay: .07s; }
+    .offer-row:nth-child(3) { animation-delay: .14s; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
-
 <body>
 
-<header>
-  <div class="container">
-    <div class="header-row">
-      <a class="logo" href="#top">
-        <div class="logo-icon">
-          <i class="fa-solid fa-chart-line"></i>
-        </div>
-        <div class="logo-text">
-          <div class="logo-main">OutreachLegale</div>
-          <div class="logo-sub">Affiliate Platform</div>
-        </div>
-      </a>
+<nav>
+  <a href="/" class="nav-logo">Outreach<em>Go</em></a>
+  <ul class="nav-center">
+    <li><a href="/offers" class="active">Offers</a></li>
+    <li><a href="/disclosure">Disclosure</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+  </ul>
+  <a href="/" class="nav-back">
+    <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Home
+  </a>
+</nav>
 
-      <nav class="nav">
-        <a href="#top" class="active">Home</a>
-        <a href="#offers">Top Offers</a>
-        <a href="#faq">FAQ</a>
-        <a href="#disclaimer">Disclosure</a>
-      </nav>
-    </div>
+<div class="page-header">
+  <div class="ph-inner">
+    <div class="kicker">All Offers</div>
+    <h1>Top Picks<br/>for <em>2025</em></h1>
+    <p class="page-desc">Every platform here is independently reviewed. We earn a commission if you purchase — at no cost to you, ever.</p>
   </div>
-</header>
+</div>
 
-<section class="hero" id="top">
-  <div class="hero-content container">
-    <h1>Affiliate Intelligence Platform</h1>
-    <p class="hero-subtitle">
-      Curated selection of ClickBank offers with transparent tracking and clear disclosure.
-      We focus on providing clear information about popular affiliate products.
-    </p>
+<div class="filter-bar">
+  <button class="filter-btn active" data-filter="all">All Categories</button>
+  <button class="filter-btn" data-filter="sales">Sales & Funnels</button>
+  <button class="filter-btn" data-filter="freelance">Freelance</button>
+  <button class="filter-btn" data-filter="pm">Project Management</button>
+</div>
 
-    <div class="cta-row">
-      <a class="btn btn-primary" href="#offers">
-        <i class="fa-solid fa-bolt"></i> View Top Offers
-      </a>
-      <a class="btn btn-secondary" href="#faq">
-        <i class="fa-solid fa-circle-info"></i> How It Works
-      </a>
-    </div>
+<section class="offers-section">
+  <div class="offers-list" id="offers-list">
 
-    <div class="trust-badges">
-      <div class="badge">
-        <i class="fa-solid fa-shield-check"></i>
-        <span>Full Transparency & Disclosure</span>
-      </div>
-      <div class="badge">
-        <i class="fa-solid fa-chart-bar"></i>
-        <span>Performance Tracking</span>
-      </div>
-      <div class="badge">
-        <i class="fa-solid fa-star"></i>
-        <span>Curated Selection</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="offers">
-  <div class="container">
-    <div class="section-title">
-      <h2>Curated Affiliate Offers</h2>
-      <p>Our selection of popular ClickBank offers. Each product includes clear information and affiliate disclosure.</p>
-    </div>
-
-    <div class="offers-container">
-      <!-- ProDentim -->
-      <div class="card">
-        <div class="card-header">
-          <span class="tag green"><i class="fa-solid fa-tooth"></i> Dental Health</span>
-          <div class="rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star-half"></i>
-            <span>Popular Offer</span>
-          </div>
+    <div class="offer-row top-pick" data-cat="pm">
+      <div class="offer-icon">📋</div>
+      <div class="offer-main">
+        <div class="offer-row-top">
+          <div class="offer-name-text">Monday.com</div>
+          <span class="badge-pick">⭐ Editor's Pick</span>
         </div>
-        <h3>ProDentim Oral Health</h3>
-        <p>A dental health supplement marketed to support oral wellness with probiotic ingredients. Popular in the dental niche.</p>
-        <ul class="features">
-          <li><i class="fa-solid fa-check-circle"></i> Probiotic formula for oral care</li>
-          <li><i class="fa-solid fa-check-circle"></i> Marketed as natural ingredients</li>
-          <li><i class="fa-solid fa-check-circle"></i> Money-back guarantee offered</li>
-          <li><i class="fa-solid fa-check-circle"></i> Frequently promoted by affiliates</li>
-        </ul>
-        <div class="card-actions">
-          <a class="btn-card" target="_blank" rel="noopener"
-             href="https://50f4e-l0gm4vak4fzer0soqbeu.hop.clickbank.net/?tid=prodentim_main">
-            <i class="fa-solid fa-rocket"></i> View Offer
-          </a>
-          <a class="btn-outline" href="#faq">
-            <i class="fa-solid fa-info-circle"></i> Details
-          </a>
-        </div>
-        <div class="affiliate-note">
-          <strong>Affiliate Disclosure:</strong> This is an affiliate link. We may earn a commission if you make a purchase, at no additional cost to you.
+        <div class="offer-row-cat">Project Management</div>
+        <p class="offer-row-desc">The work OS trusted by 200,000+ companies. Unified workflows, automations, and real-time dashboards that teams actually adopt long term. Scalable from solopreneur to enterprise.</p>
+        <div class="offer-row-meta">
+          <div class="rating"><span class="stars">★★★★★</span> 4.9 / 5</div>
+          <div class="perk">Free plan available</div>
+          <div class="tag">Automation</div>
+          <div class="tag">Team Workflows</div>
         </div>
       </div>
-
-      <!-- ProstaVive A -->
-      <div class="card">
-        <div class="card-header">
-          <span class="tag purple"><i class="fa-solid fa-person"></i> Men's Health</span>
-          <div class="rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <span>High Gravity</span>
-          </div>
-        </div>
-        <h3>ProstaVive Prostate Support</h3>
-        <p>A men's health supplement marketed for prostate support. Popular with audiences interested in men's wellness.</p>
-        <ul class="features">
-          <li><i class="fa-solid fa-check-circle"></i> Marketed for men 45+</li>
-          <li><i class="fa-solid fa-check-circle"></i> Contains traditional herbal ingredients</li>
-          <li><i class="fa-solid fa-check-circle"></i> Satisfaction guarantee available</li>
-          <li><i class="fa-solid fa-check-circle"></i> Strong affiliate support materials</li>
-        </ul>
-        <div class="card-actions">
-          <a class="btn-card" target="_blank" rel="noopener"
-             href="https://570349x32z5-fucc2e9b2ddw0r.hop.clickbank.net/?tid=prostavive_a_main">
-            <i class="fa-solid fa-rocket"></i> View Offer
-          </a>
-          <a class="btn-outline" href="#faq">
-            <i class="fa-solid fa-info-circle"></i> Details
-          </a>
-        </div>
-        <div class="affiliate-note">
-          <strong>Affiliate Disclosure:</strong> This is an affiliate link. We may earn a commission if you make a purchase, at no additional cost to you.
-        </div>
-      </div>
-
-      <!-- Mitolyn -->
-      <div class="card">
-        <div class="card-header">
-          <span class="tag orange"><i class="fa-solid fa-fire"></i> Metabolism</span>
-          <div class="rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-            <span>Wellness Niche</span>
-          </div>
-        </div>
-        <h3>Mitolyn Metabolic Support</h3>
-        <p>A supplement marketed to support metabolic function and energy levels. Appeals to fitness and wellness audiences.</p>
-        <ul class="features">
-          <li><i class="fa-solid fa-check-circle"></i> Marketed for energy support</li>
-          <li><i class="fa-solid fa-check-circle"></i> Popular in fitness communities</li>
-          <li><i class="fa-solid fa-check-circle"></i> Money-back guarantee option</li>
-          <li><i class="fa-solid fa-check-circle"></i> Strong landing page conversion</li>
-        </ul>
-        <div class="card-actions">
-          <a class="btn-card" target="_blank" rel="noopener"
-             href="https://9a7b37n9fybr5o7bwdx96kcrbq.hop.clickbank.net/?tid=mitolyn_main">
-            <i class="fa-solid fa-rocket"></i> View Offer
-          </a>
-          <a class="btn-outline" href="#faq">
-            <i class="fa-solid fa-info-circle"></i> Details
-          </a>
-        </div>
-        <div class="affiliate-note">
-          <strong>Affiliate Disclosure:</strong> This is an affiliate link. We may earn a commission if you make a purchase, at no additional cost to you.
-        </div>
-      </div>
-
-      <!-- Joint Genesis -->
-      <div class="card">
-        <div class="card-header">
-          <span class="tag green"><i class="fa-solid fa-person-walking"></i> Mobility</span>
-          <div class="rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star-half"></i>
-            <span>Active Lifestyle</span>
-          </div>
-        </div>
-        <h3>Joint Genesis Mobility</h3>
-        <p>A joint support supplement marketed for mobility and comfort. Popular with active individuals and older demographics.</p>
-        <ul class="features">
-          <li><i class="fa-solid fa-check-circle"></i> Marketed for joint comfort</li>
-          <li><i class="fa-solid fa-check-circle"></i> Appeals to active lifestyle audience</li>
-          <li><i class="fa-solid fa-check-circle"></i> Extended guarantee offered</li>
-          <li><i class="fa-solid fa-check-circle"></i> Clear value proposition</li>
-        </ul>
-        <div class="card-actions">
-          <a class="btn-card" target="_blank" rel="noopener"
-             href="https://f993cymcanc-2xafx2-iwbtyet.hop.clickbank.net/?tid=jointgenesis_main">
-            <i class="fa-solid fa-rocket"></i> View Offer
-          </a>
-          <a class="btn-outline" href="#faq">
-            <i class="fa-solid fa-info-circle"></i> Details
-          </a>
-        </div>
-        <div class="affiliate-note">
-          <strong>Affiliate Disclosure:</strong> This is an affiliate link. We may earn a commission if you make a purchase, at no additional cost to you.
-        </div>
-      </div>
-
-      <!-- ProstaVive B -->
-      <div class="card">
-        <div class="card-header">
-          <span class="tag purple"><i class="fa-solid fa-flask"></i> A/B Test</span>
-          <div class="rating">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <span>Tracking Test</span>
-          </div>
-        </div>
-        <h3>ProstaVive (Alternative Link)</h3>
-        <p>Same prostate support formula with different tracking parameters. Used to compare performance between different tracking links.</p>
-        <ul class="features">
-          <li><i class="fa-solid fa-check-circle"></i> Same product, different tracking</li>
-          <li><i class="fa-solid fa-check-circle"></i> Useful for performance comparison</li>
-          <li><i class="fa-solid fa-check-circle"></i> Satisfaction guarantee available</li>
-          <li><i class="fa-solid fa-check-circle"></i> Performance tracking data</li>
-        </ul>
-        <div class="card-actions">
-          <a class="btn-card pulse" target="_blank" rel="noopener"
-             href="https://782a0yoyhpg32s9gxd6a3-dl4q.hop.clickbank.net/?tid=prostavive_b_main">
-            <i class="fa-solid fa-chart-line"></i> Test This Link
-          </a>
-          <a class="btn-outline" href="#faq">
-            <i class="fa-solid fa-info-circle"></i> Why Two Links?
-          </a>
-        </div>
-        <div class="affiliate-note">
-          <strong>Affiliate Disclosure:</strong> This is an affiliate link. We may earn a commission if you make a purchase, at no additional cost to you.
-        </div>
+      <div class="offer-cta-wrap">
+        <a href="https://go.outreachgo.net/monday" class="offer-cta" rel="noopener">
+          View Offer
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
     </div>
+
+    <div class="offer-row" data-cat="sales">
+      <div class="offer-icon">🚀</div>
+      <div class="offer-main">
+        <div class="offer-row-top">
+          <div class="offer-name-text">ClickFunnels</div>
+        </div>
+        <div class="offer-row-cat">Sales & Funnels</div>
+        <p class="offer-row-desc">Build high-converting sales funnels, membership sites, and landing pages without writing code. Used by 100,000+ entrepreneurs. Handles the complete revenue funnel from opt-in to upsell.</p>
+        <div class="offer-row-meta">
+          <div class="rating"><span class="stars">★★★★★</span> 4.8 / 5</div>
+          <div class="perk">14-day free trial</div>
+          <div class="tag">E-commerce</div>
+          <div class="tag">Landing Pages</div>
+        </div>
+      </div>
+      <div class="offer-cta-wrap">
+        <a href="https://go.outreachgo.net/clickfunnels" class="offer-cta" rel="noopener">
+          View Offer
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="offer-row" data-cat="freelance">
+      <div class="offer-icon">🎨</div>
+      <div class="offer-main">
+        <div class="offer-row-top">
+          <div class="offer-name-text">Fiverr Business</div>
+        </div>
+        <div class="offer-row-cat">Freelance Marketplace</div>
+        <p class="offer-row-desc">Access 700+ categories of professional services — design, development, marketing, and copywriting. Scale your team on demand with vetted freelancers, without agency overhead or long-term contracts.</p>
+        <div class="offer-row-meta">
+          <div class="rating"><span class="stars">★★★★★</span> 4.7 / 5</div>
+          <div class="perk">Pay per project</div>
+          <div class="tag">Design</div>
+          <div class="tag">Marketing</div>
+          <div class="tag">Development</div>
+        </div>
+      </div>
+      <div class="offer-cta-wrap">
+        <a href="https://go.outreachgo.net/fiverr" class="offer-cta" rel="noopener">
+          View Offer
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<section class="section-alt" id="tracking">
-  <div class="container">
-    <div class="section-title">
-      <h2>Transparent Tracking</h2>
-      <p>We use clear tracking methods to measure performance while maintaining full disclosure.</p>
-    </div>
-    <div style="max-width: 800px; margin: 0 auto;">
-      <div class="card">
-        <h3>How Our Tracking Works</h3>
-        <p>Each offer includes unique tracking parameters that provide basic performance insights:</p>
-        <ul class="features" style="margin-top: 20px;">
-          <li><i class="fa-solid fa-bullseye"></i> <strong>Click Tracking:</strong> Basic measurement of link engagement</li>
-          <li><i class="fa-solid fa-chart-line"></i> <strong>Performance Comparison:</strong> Simple A/B testing between different links</li>
-          <li><i class="fa-solid fa-shield-alt"></i> <strong>Full Disclosure:</strong> Clear affiliate relationship disclosure on every offer</li>
-          <li><i class="fa-solid fa-tag"></i> <strong>Tracking IDs:</strong> Each link includes a "tid" parameter for basic tracking</li>
-        </ul>
-        <div style="margin-top: 30px; padding: 20px; background: var(--light); border-radius: var(--radius);">
-          <h4 style="margin-bottom: 10px;">Simple & Transparent</h4>
-          <p style="font-size: 14px; color: var(--muted);">
-            Our approach focuses on transparency rather than complex analytics. Every affiliate relationship is clearly disclosed,
-            and tracking is limited to basic ClickBank parameters.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="container">
-    <div class="section-title">
-      <h2>Frequently Asked Questions</h2>
-      <p>Clear answers to common questions about our platform and affiliate offers.</p>
-    </div>
-
-    <div class="faq-container">
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFAQ(this)">
-          <span>How does the affiliate commission work?</span>
-          <i class="fa-solid fa-plus"></i>
-        </div>
-        <div class="faq-answer">
-          <p>When you click on an offer link and make a purchase, we may earn a commission at no additional cost to you. This is how we maintain our platform. All affiliate relationships are fully disclosed as required by FTC guidelines.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFAQ(this)">
-          <span>Is this medical advice or treatment?</span>
-          <i class="fa-solid fa-plus"></i>
-        </div>
-        <div class="faq-answer">
-          <p>No. Our platform provides information about health and wellness products available on ClickBank. We do not provide medical advice, diagnosis, or treatment recommendations. Always consult with a healthcare professional before starting any new supplement or health regimen.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFAQ(this)">
-          <span>Why are there two ProstaVive links?</span>
-          <i class="fa-solid fa-plus"></i>
-        </div>
-        <div class="faq-answer">
-          <p>We include two different tracking links for the same offer to perform simple A/B testing. This allows us to gather basic performance data. Both links lead to the same product page - the only difference is the tracking parameters.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFAQ(this)">
-          <span>What do the "tid=" tracking codes do?</span>
-          <i class="fa-solid fa-plus"></i>
-        </div>
-        <div class="faq-answer">
-          <p>The "tid" (tracking ID) parameter helps us monitor which links are performing better. This data is used to improve our recommendations. It does not affect pricing or user experience in any way.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFAQ(this)">
-          <span>How do you select the offers on this platform?</span>
-          <i class="fa-solid fa-plus"></i>
-        </div>
-        <div class="faq-answer">
-          <p>We select offers based on popularity, gravity scores, and vendor reputation within the ClickBank marketplace. We focus on products with clear information and good customer feedback.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="disclosure-bar">
+  <strong style="color:var(--text-muted)">Affiliate Disclosure:</strong> OutreachGo may earn a commission when you click links and make a purchase. This never affects your price or our editorial independence.
+  <a href="/disclosure"> Read full disclosure →</a>
+</div>
 
 <footer>
-  <div class="container">
-    <div class="footer-content">
-      <div class="footer-logo">
-        <a class="logo" href="#top">
-          <div class="logo-icon">
-            <i class="fa-solid fa-chart-line"></i>
-          </div>
-          <div class="logo-text">
-            <div class="logo-main">OutreachLegale</div>
-            <div class="logo-sub">Affiliate Platform</div>
-          </div>
-        </a>
-        <p>Affiliate platform providing information about popular ClickBank offers with transparent tracking and clear disclosure.</p>
-      </div>
-
-      <div class="footer-links">
-        <div class="footer-col">
-          <h4>Platform</h4>
-          <ul>
-            <li><a href="#top">Home</a></li>
-            <li><a href="#offers">Top Offers</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#tracking">Tracking Info</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="#disclaimer">Affiliate Disclosure</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#tracking">Tracking Info</a></li>
-          </ul>
-        </div>
-      </div>
+  <div class="footer-grid">
+    <div>
+      <div class="f-brand-name">Outreach<em>Go</em></div>
+      <p class="f-desc">Independently curated business tools for operators, founders, and modern teams.</p>
     </div>
-
-    <!-- ✅ FIX #1: Real anchor target exists -->
-    <div class="disclaimer" id="disclaimer">
-      <strong>AFFILIATE DISCLOSURE:</strong> OutreachLegale is an independent affiliate platform. We may earn commissions from qualifying purchases made through links on this site.
-      This comes at no extra cost to you and helps support our platform. We provide information about affiliate offers but make no guarantees regarding product effectiveness or results.
-      Always do your own research and consult with professionals when needed. Product names, logos, brands, and other trademarks are the property of their respective owners.
+    <div>
+      <div class="f-col-title">Navigation</div>
+      <ul class="f-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/offers">Top Offers</a></li>
+        <li><a href="/disclosure">Disclosure</a></li>
+      </ul>
     </div>
+    <div>
+      <div class="f-col-title">Legal</div>
+      <ul class="f-links">
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="/delete-data">Delete My Data</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 OutreachGo — outreachgo.net</span>
+    <span>All rights reserved</span>
   </div>
 </footer>
 
 <script>
-  // ✅ FIX #2 + #3: Clean reveal logic (no double meaning "reveal")
-  document.addEventListener('DOMContentLoaded', function () {
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px 0px -10% 0px',
-      threshold: 0.12
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('reveal');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    // Observe only what should animate-in
-    document.querySelectorAll('.card, .faq-item').forEach(el => observer.observe(el));
-  });
-
-  // FAQ toggle
-  function toggleFAQ(element) {
-    const faqItem = element.parentElement;
-    faqItem.classList.toggle('active');
-
-    const icon = element.querySelector('i');
-    if (faqItem.classList.contains('active')) {
-      icon.classList.remove('fa-plus');
-      icon.classList.add('fa-minus');
-    } else {
-      icon.classList.remove('fa-minus');
-      icon.classList.add('fa-plus');
-    }
-  }
-
-  // Smooth scroll
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const targetId = this.getAttribute('href');
-      if (!targetId || targetId === '#') return;
-
-      const targetElement = document.querySelector(targetId);
-      if (!targetElement) return;
-
-      e.preventDefault();
-      window.scrollTo({
-        top: targetElement.offsetTop - 80,
-        behavior: 'smooth'
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const offerRows  = document.querySelectorAll('.offer-row');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      offerRows.forEach(row => {
+        row.style.display = (f === 'all' || row.dataset.cat === f) ? '' : 'none';
       });
     });
   });
 </script>
-
 </body>
 </html>
