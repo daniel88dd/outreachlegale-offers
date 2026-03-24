@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — OutreachGo Analytics</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=DM+Sans:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0f1014; --bg-2: #16181d; --bg-3: #1e2029;
+      --border: rgba(255,255,255,.07); --border-bright: rgba(255,255,255,.12);
+      --text: #e8e8f0; --text-muted: #7b7b96; --text-faint: #4a4a5e;
+      --accent: #c8773a; --accent-glow: rgba(200,119,58,.15);
+      --green: #34d399; --green-bg: rgba(52,211,153,.08);
+      --red: #f87171; --red-bg: rgba(248,113,113,.08);
+      --blue: #60a5fa; --blue-bg: rgba(96,165,250,.08);
+      --gold: #e6c36a; --gold-bg: rgba(230,195,106,.10);
+      --purple: #a78bfa; --purple-bg: rgba(167,139,250,.10);
+      --radius: 12px; --radius-sm: 8px;
+      --transition: 0.18s ease;
+    }
+    html { background: var(--bg); }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.5; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+    .layout { display: flex; min-height: 100vh; }
+    .sidebar { width: 220px; flex-shrink: 0; background: var(--bg-2); border-right: 1px solid var(--border); display: flex; flex-direction: column; }
+    .sidebar-logo { padding: 1.25rem 1.25rem 0; }
+    .sidebar-logo a { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 600; color: var(--text); text-decoration: none; }
+    .sidebar-logo span { color: var(--accent); }
+    .sidebar-tag { display: inline-block; font-size: .65rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; background: var(--accent-glow); color: var(--accent); padding: .15rem .5rem; border-radius: 50px; margin-left: .25rem; vertical-align: middle; }
+    .sidebar-nav { padding: 1.5rem .75rem; flex: 1; }
+    .nav-group-label { font-size: .65rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--text-faint); padding: 0 .5rem; margin-bottom: .5rem; }
+    .sidebar-nav ul { list-style: none; margin-bottom: 1.5rem; }
+    .sidebar-nav a { display: flex; align-items: center; gap: .65rem; padding: .5rem .75rem; border-radius: var(--radius-sm); font-size: .875rem; color: var(--text-muted); text-decoration: none; transition: all var(--transition); }
+    .sidebar-nav a:hover { background: var(--bg-3); color: var(--text); }
+    .sidebar-nav a.active { background: var(--accent-glow); color: var(--accent); }
+    .sidebar-footer { padding: 1rem .75rem; border-top: 1px solid var(--border); }
+    .sidebar-footer a { display: flex; align-items: center; gap: .5rem; font-size: .8125rem; color: var(--text-faint); text-decoration: none; padding: .4rem .5rem; border-radius: var(--radius-sm); }
+    .sidebar-footer a:hover { color: var(--text-muted); }
+    .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    .topbar { height: 60px; border-bottom: 1px solid var(--border); background: var(--bg-2); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; }
+    .topbar-title { font-size: .9375rem; font-weight: 500; }
+    .topbar-right { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
+    .topbar-badge { font-size: .75rem; background: var(--green-bg); color: var(--green); padding: .25rem .65rem; border-radius: 50px; font-weight: 500; }
+    .topbar-muted { font-size: .75rem; color: var(--text-faint); }
+    .refresh-btn { display: flex; align-items: center; gap: .4rem; font-size: .8rem; color: var(--text-muted); background: var(--bg-3); border: 1px solid var(--border); padding: .35rem .8rem; border-radius: var(--radius-sm); cursor: pointer; font-family: 'DM Sans', sans-serif; }
+    .refresh-btn:hover { color: var(--text); border-color: var(--border-bright); }
+    .content { flex: 1; overflow-y: auto; padding: 2rem; }
+    .notice { margin-bottom: 1rem; padding: .85rem 1rem; border-radius: var(--radius-sm); font-size: .82rem; border: 1px solid var(--border); background: var(--bg-2); color: var(--text-muted); }
+    .notice.error { border-color: rgba(248,113,113,.25); background: var(--red-bg); color: #fecaca; }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .stat-card { background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
+    .stat-label { font-size: .75rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .5rem; }
+    .stat-value { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 600; line-height: 1; margin-bottom: .35rem; }
+    .stat-delta { font-size: .8rem; display: flex; align-items: center; gap: .3rem; }
+    .delta-up { color: var(--green); }
+    .delta-down { color: var(--red); }
+    .stat-card.accent { border-color: rgba(200,119,58,.25); background: var(--accent-glow); }
+    .stat-card.accent .stat-value { color: var(--accent); }
+    .section-title { font-size: .875rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 1rem; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+    .card { background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .card-header { padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .card-title { font-size: .875rem; font-weight: 500; }
+    .card-body { padding: 1.25rem; }
+    table { width: 100%; border-collapse: collapse; }
+    th { font-size: .7rem; font-weight: 500; color: var(--text-faint); text-transform: uppercase; letter-spacing: .08em; padding: .5rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+    td { padding: .75rem 1rem; font-size: .875rem; border-bottom: 1px solid rgba(255,255,255,.03); }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,.015); }
+    .offer-pill { display: inline-flex; align-items: center; gap: .45rem; }
+    .offer-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+    .offer-dot.prodentim { background: var(--green); }
+    .offer-dot.prostavive { background: var(--accent); }
+    .offer-dot.jointcare { background: var(--blue); }
+    .offer-dot.mitolyn { background: var(--purple); }
+    .badge { font-size: .7rem; font-weight: 500; padding: .2rem .55rem; border-radius: 50px; }
+    .badge-green { background: var(--green-bg); color: var(--green); }
+    .badge-gold { background: var(--gold-bg); color: var(--gold); }
+    .tid-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+    .tid-card { background: var(--bg-3); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1rem; }
+    .tid-label { font-size: .7rem; color: var(--text-faint); margin-bottom: .25rem; text-transform: uppercase; letter-spacing: .06em; }
+    .tid-value { font-family: 'DM Mono', monospace; font-size: .8125rem; color: var(--text); word-break: break-all; }
+    .tid-offer { font-size: .8125rem; color: var(--text-muted); margin-top: .5rem; display: flex; justify-content: space-between; align-items: center; gap: .75rem; }
+    .bar-list { display: flex; flex-direction: column; gap: .85rem; }
+    .bar-item { display: flex; flex-direction: column; gap: .3rem; }
+    .bar-meta { display: flex; justify-content: space-between; align-items: center; gap: .75rem; }
+    .bar-name { font-size: .8125rem; color: var(--text); }
+    .bar-count { font-size: .8125rem; color: var(--text-muted); font-family: 'DM Mono', monospace; }
+    .bar-track { height: 8px; background: var(--bg-3); border-radius: 50px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 50px; transition: width .6s ease; }
+    .bar-fill.prodentim { background: var(--green); }
+    .bar-fill.prostavive { background: var(--accent); }
+    .bar-fill.jointcare { background: var(--blue); }
+    .bar-fill.mitolyn { background: var(--purple); }
+    .full-card { margin-bottom: 2rem; }
+    .mono { font-family: 'DM Mono', monospace; }
+    @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+    @media (max-width: 700px) { .sidebar { display: none; } .content { padding: 1.25rem; } .topbar { padding: 0 1.25rem; height: auto; min-height: 60px; } }
+  </style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <a href="admin.html">Outreach<span>Go</span></a>
+      <span class="sidebar-tag">Admin</span>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-group-label">Analytics</div>
+      <ul>
+        <li><a href="admin.html" class="active">Dashboard</a></li>
+        <li><a href="#clicks">Click Logs</a></li>
+        <li><a href="#tids">TIDs</a></li>
+      </ul>
+      <div class="nav-group-label">Offers</div>
+      <ul>
+        <li><a href="#top-offers-bars">Offer Performance</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="index.html" target="_blank" rel="noopener noreferrer">View Public Site</a>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <span class="topbar-title">Dashboard Overview</span>
+      <div class="topbar-right">
+        <span class="topbar-badge" id="live-badge">● Live</span>
+        <span class="topbar-muted" id="last-updated">Waiting for data…</span>
+        <button class="refresh-btn" onclick="loadData()">Refresh</button>
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="notice" id="notice">Connect this page to your Worker endpoint and optional admin token below.</div>
+
+      <div class="stats-grid">
+        <div class="stat-card accent">
+          <div class="stat-label">Total Clicks</div>
+          <div class="stat-value" id="stat-total">—</div>
+          <div class="stat-delta delta-up" id="delta-total">Loading…</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Today</div>
+          <div class="stat-value" id="stat-today">—</div>
+          <div class="stat-delta delta-up" id="delta-today">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">This Week</div>
+          <div class="stat-value" id="stat-week">—</div>
+          <div class="stat-delta" id="delta-week">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Active Offers</div>
+          <div class="stat-value" id="stat-offers">4</div>
+          <div class="stat-delta" style="color:var(--text-muted)">ProDentim, ProstaVive, Joint Care, Mitolyn</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Top Offers by Clicks</span>
+          </div>
+          <div class="card-body">
+            <div class="bar-list" id="top-offers-bars">
+              <div class="bar-item">
+                <div class="bar-meta"><span class="bar-name">ProDentim</span><span class="bar-count" id="bar-prodentim">—</span></div>
+                <div class="bar-track"><div class="bar-fill prodentim" id="bar-prodentim-fill" style="width:0%"></div></div>
+              </div>
+              <div class="bar-item">
+                <div class="bar-meta"><span class="bar-name">ProstaVive</span><span class="bar-count" id="bar-prostavive">—</span></div>
+                <div class="bar-track"><div class="bar-fill prostavive" id="bar-prostavive-fill" style="width:0%"></div></div>
+              </div>
+              <div class="bar-item">
+                <div class="bar-meta"><span class="bar-name">Joint Care</span><span class="bar-count" id="bar-jointcare">—</span></div>
+                <div class="bar-track"><div class="bar-fill jointcare" id="bar-jointcare-fill" style="width:0%"></div></div>
+              </div>
+              <div class="bar-item">
+                <div class="bar-meta"><span class="bar-name">Mitolyn</span><span class="bar-count" id="bar-mitolyn">—</span></div>
+                <div class="bar-track"><div class="bar-fill mitolyn" id="bar-mitolyn-fill" style="width:0%"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" id="clicks">
+          <div class="card-header">
+            <span class="card-title">Recent Clicks</span>
+            <span style="font-size:.75rem;color:var(--text-faint)">Latest 10</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Offer</th>
+                <th>TID</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody id="recent-clicks-body">
+              <tr><td colspan="3" style="color:var(--text-faint);text-align:center;padding:2rem">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="full-card" id="tids">
+        <div class="section-title">Tracking IDs (TIDs)</div>
+        <div class="tid-grid" id="tid-grid">
+          <div class="tid-card" style="grid-column:1/-1;text-align:center;color:var(--text-faint)">Loading TIDs…</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Replace these after you deploy the Worker.
+  const WORKER_BASE_URL = "https://outreachgo-clicks.outreachlegale.workers.dev";
+  const ADMIN_TOKEN = "my-super-secret-301041398";
+  const res = await fetch(`${WORKER_BASE_URL}/api/stats`, {
+  headers: {
+    'Accept': 'application/json',
+    'x-admin-token': ADMIN_TOKEN
+  }
+});
+
+  const MOCK = {
+    total: 1482,
+    today: 37,
+    week: 284,
+    byOffer: { prodentim: 612, prostavive: 401, jointcare: 284, mitolyn: 185 },
+    recentClicks: [
+      { offer: 'prodentim',  tid: 'tid_8f3a2c1', time: '2 min ago' },
+      { offer: 'prostavive', tid: 'tid_9d1b4e7', time: '5 min ago' },
+      { offer: 'jointcare',  tid: 'tid_2c8f0a3', time: '11 min ago' },
+      { offer: 'mitolyn',    tid: 'tid_5e7d1b9', time: '18 min ago' },
+      { offer: 'prodentim',  tid: 'tid_4a3c6f2', time: '22 min ago' },
+      { offer: 'jointcare',  tid: 'tid_0b9e5d8', time: '31 min ago' },
+      { offer: 'prostavive', tid: 'tid_7f1a4c0', time: '45 min ago' },
+      { offer: 'prodentim',  tid: 'tid_3d8b2e6', time: '52 min ago' },
+      { offer: 'mitolyn',    tid: 'tid_6c0f9a1', time: '1 hr ago' },
+      { offer: 'prodentim',  tid: 'tid_1e7b3d5', time: '1 hr ago' }
+    ],
+    tids: [
+      { tid: 'tid_8f3a2c1', offer: 'ProDentim', clicks: 74, last: '2 min ago' },
+      { tid: 'tid_9d1b4e7', offer: 'ProstaVive', clicks: 52, last: '5 min ago' },
+      { tid: 'tid_2c8f0a3', offer: 'Joint Care', clicks: 41, last: '11 min ago' },
+      { tid: 'tid_5e7d1b9', offer: 'Mitolyn', clicks: 38, last: '18 min ago' },
+      { tid: 'tid_4a3c6f2', offer: 'ProDentim', clicks: 29, last: '22 min ago' },
+      { tid: 'tid_0b9e5d8', offer: 'Joint Care', clicks: 21, last: '31 min ago' }
+    ]
+  };
+
+  const OFFER_NAMES = {
+    prodentim: 'ProDentim',
+    prostavive: 'ProstaVive',
+    jointcare: 'Joint Care',
+    mitolyn: 'Mitolyn'
+  };
+
+  function setNotice(message, isError = false) {
+    const el = document.getElementById('notice');
+    el.textContent = message;
+    el.className = isError ? 'notice error' : 'notice';
+  }
+
+  function updateTimestamp() {
+    const now = new Date();
+    document.getElementById('last-updated').textContent = `Updated ${now.toLocaleTimeString()}`;
+  }
+
+  function renderBars(byOffer) {
+    const safe = {
+      prodentim: byOffer.prodentim || 0,
+      prostavive: byOffer.prostavive || 0,
+      jointcare: byOffer.jointcare || 0,
+      mitolyn: byOffer.mitolyn || 0,
+    };
+    const values = Object.values(safe);
+    const max = Math.max(...values, 1);
+    for (const [key, val] of Object.entries(safe)) {
+      document.getElementById(`bar-${key}`).textContent = val.toLocaleString();
+      document.getElementById(`bar-${key}-fill`).style.width = `${(val / max) * 100}%`;
+    }
+  }
+
+  function renderRecentClicks(rows) {
+    const tbody = document.getElementById('recent-clicks-body');
+    if (!rows?.length) {
+      tbody.innerHTML = '<tr><td colspan="3" style="color:var(--text-faint);text-align:center;padding:2rem">No clicks yet.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = rows.map(c => `
+      <tr>
+        <td><span class="offer-pill"><span class="offer-dot ${c.offer}"></span>${OFFER_NAMES[c.offer] || c.offer}</span></td>
+        <td><code class="mono" style="font-size:.75rem;color:var(--text-muted)">${c.tid}</code></td>
+        <td style="color:var(--text-muted);font-size:.8125rem">${c.time}</td>
+      </tr>
+    `).join('');
+  }
+
+  function renderTids(rows) {
+    const tidGrid = document.getElementById('tid-grid');
+    if (!rows?.length) {
+      tidGrid.innerHTML = '<div class="tid-card" style="grid-column:1/-1;text-align:center;color:var(--text-faint)">No TIDs yet.</div>';
+      return;
+    }
+    tidGrid.innerHTML = rows.map(t => `
+      <div class="tid-card">
+        <div class="tid-label">Tracking ID</div>
+        <div class="tid-value">${t.tid}</div>
+        <div class="tid-offer">
+          <span>${t.offer}</span>
+          <span class="badge badge-green">${t.clicks} clicks</span>
+        </div>
+        <div style="font-size:.75rem;color:var(--text-faint);margin-top:.4rem">Last: ${t.last}</div>
+      </div>
+    `).join('');
+  }
+
+  function renderData(data) {
+    document.getElementById('stat-total').textContent = Number(data.total || 0).toLocaleString();
+    document.getElementById('stat-today').textContent = Number(data.today || 0).toLocaleString();
+    document.getElementById('stat-week').textContent = Number(data.week || 0).toLocaleString();
+    document.getElementById('delta-total').textContent = `↑ ${Number(data.today || 0).toLocaleString()} clicks today`;
+    document.getElementById('delta-today').textContent = `↑ ${Number(data.today || 0).toLocaleString()} clicks today`;
+    document.getElementById('delta-week').textContent = `↑ ${Number(data.week || 0).toLocaleString()} this week`;
+    document.getElementById('stat-offers').textContent = Object.keys(data.byOffer || {}).length || 4;
+    renderBars(data.byOffer || {});
+    renderRecentClicks(data.recentClicks || []);
+    renderTids(data.tids || []);
+    updateTimestamp();
+  }
+
+  async function loadData() {
+    try {
+      const res = await fetch(ANALYTICS_ENDPOINT, { headers: { 'Accept': 'application/json' } });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      renderData(data);
+      document.getElementById('live-badge').textContent = '● Live';
+      setNotice('Connected to Worker analytics endpoint.');
+    } catch (err) {
+      renderData(MOCK);
+      document.getElementById('live-badge').textContent = '● Mock';
+      setNotice(`Using mock data because the Worker endpoint is not ready yet (${err.message}).`, true);
+    }
+  }
+
+  loadData();
+  setInterval(loadData, 60000);
+</script>
+</body>
+</html>
