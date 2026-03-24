@@ -65,9 +65,10 @@
     .card-header { padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
     .card-title { font-size: .875rem; font-weight: 500; }
     .card-body { padding: 1.25rem; }
+    .full-card { margin-bottom: 2rem; }
     table { width: 100%; border-collapse: collapse; }
     th { font-size: .7rem; font-weight: 500; color: var(--text-faint); text-transform: uppercase; letter-spacing: .08em; padding: .5rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
-    td { padding: .75rem 1rem; font-size: .875rem; border-bottom: 1px solid rgba(255,255,255,.03); }
+    td { padding: .75rem 1rem; font-size: .875rem; border-bottom: 1px solid rgba(255,255,255,.03); vertical-align: top; }
     tr:last-child td { border-bottom: none; }
     tr:hover td { background: rgba(255,255,255,.015); }
     .offer-pill { display: inline-flex; align-items: center; gap: .45rem; }
@@ -78,7 +79,7 @@
     .offer-dot.mitolyn { background: var(--purple); }
     .badge { font-size: .7rem; font-weight: 500; padding: .2rem .55rem; border-radius: 50px; }
     .badge-green { background: var(--green-bg); color: var(--green); }
-    .badge-gold { background: var(--gold-bg); color: var(--gold); }
+    .mono { font-family: 'DM Mono', monospace; }
     .tid-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
     .tid-card { background: var(--bg-3); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1rem; }
     .tid-label { font-size: .7rem; color: var(--text-faint); margin-bottom: .25rem; text-transform: uppercase; letter-spacing: .06em; }
@@ -95,9 +96,9 @@
     .bar-fill.prostavive { background: var(--accent); }
     .bar-fill.jointcare { background: var(--blue); }
     .bar-fill.mitolyn { background: var(--purple); }
-    .full-card { margin-bottom: 2rem; }
-    .mono { font-family: 'DM Mono', monospace; }
-    @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+    .small { font-size: .75rem; color: var(--text-faint); }
+    .truncate { max-width: 420px; overflow-wrap: anywhere; }
+    @media (max-width: 1100px) { .grid-2 { grid-template-columns: 1fr; } }
     @media (max-width: 700px) { .sidebar { display: none; } .content { padding: 1.25rem; } .topbar { padding: 0 1.25rem; height: auto; min-height: 60px; } }
   </style>
 </head>
@@ -113,6 +114,7 @@
       <ul>
         <li><a href="admin.html" class="active">Dashboard</a></li>
         <li><a href="#clicks">Click Logs</a></li>
+        <li><a href="#details">Detailed Logs</a></li>
         <li><a href="#tids">TIDs</a></li>
       </ul>
       <div class="nav-group-label">Offers</div>
@@ -136,7 +138,7 @@
     </header>
 
     <div class="content">
-      <div class="notice" id="notice">Connect this page to your Worker endpoint and optional admin token below.</div>
+      <div class="notice" id="notice">Connecting to live Worker analytics…</div>
 
       <div class="stats-grid">
         <div class="stat-card accent">
@@ -157,7 +159,7 @@
         <div class="stat-card">
           <div class="stat-label">Active Offers</div>
           <div class="stat-value" id="stat-offers">4</div>
-          <div class="stat-delta" style="color:var(--text-muted)">ProDentim, ProstaVive, Joint Care, Mitolyn</div>
+          <div class="stat-delta small">ProDentim, ProstaVive, Joint Care, Mitolyn</div>
         </div>
       </div>
 
@@ -191,7 +193,7 @@
         <div class="card" id="clicks">
           <div class="card-header">
             <span class="card-title">Recent Clicks</span>
-            <span style="font-size:.75rem;color:var(--text-faint)">Latest 10</span>
+            <span class="small">Latest 20</span>
           </div>
           <table>
             <thead>
@@ -203,6 +205,29 @@
             </thead>
             <tbody id="recent-clicks-body">
               <tr><td colspan="3" style="color:var(--text-faint);text-align:center;padding:2rem">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="full-card card" id="details">
+        <div class="card-header">
+          <span class="card-title">Detailed Click Logs</span>
+          <span class="small">IP hash, user agent, full timestamp</span>
+        </div>
+        <div style="overflow:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Offer</th>
+                <th>TID</th>
+                <th>IP Hash</th>
+                <th>User Agent</th>
+                <th>Full Time</th>
+              </tr>
+            </thead>
+            <tbody id="detailed-clicks-body">
+              <tr><td colspan="5" style="color:var(--text-faint);text-align:center;padding:2rem">Loading…</td></tr>
             </tbody>
           </table>
         </div>
@@ -241,61 +266,63 @@
   }
 
   function normalizeByOffer(rows) {
-    const map = {
-      prodentim: 0,
-      prostavive: 0,
-      jointcare: 0,
-      mitolyn: 0
-    };
-
+    const map = { prodentim: 0, prostavive: 0, jointcare: 0, mitolyn: 0 };
     if (Array.isArray(rows)) {
       for (const row of rows) {
-        if (row.offer in map) {
-          map[row.offer] = Number(row.count || 0);
-        }
+        if (row.offer in map) map[row.offer] = Number(row.count || 0);
       }
     }
-
     return map;
   }
 
   function renderBars(byOfferRows) {
     const byOffer = normalizeByOffer(byOfferRows);
     const max = Math.max(...Object.values(byOffer), 1);
-
     for (const [key, val] of Object.entries(byOffer)) {
       document.getElementById(`bar-${key}`).textContent = val.toLocaleString();
       document.getElementById(`bar-${key}-fill`).style.width = `${(val / max) * 100}%`;
     }
-
     return byOffer;
   }
 
   function renderRecentClicks(rows) {
     const tbody = document.getElementById("recent-clicks-body");
-
-    if (!rows || !rows.length) {
+    if (!rows?.length) {
       tbody.innerHTML = '<tr><td colspan="3" style="color:var(--text-faint);text-align:center;padding:2rem">No clicks yet.</td></tr>';
       return;
     }
-
     tbody.innerHTML = rows.map(c => `
       <tr>
         <td><span class="offer-pill"><span class="offer-dot ${c.offer}"></span>${OFFER_NAMES[c.offer] || c.offer}</span></td>
         <td><code class="mono" style="font-size:.75rem;color:var(--text-muted)">${c.tid}</code></td>
-        <td style="color:var(--text-muted);font-size:.8125rem">${c.created_at || "-"}</td>
+        <td style="color:var(--text-muted);font-size:.8125rem">${c.created_at || '-'}</td>
+      </tr>
+    `).join("");
+  }
+
+  function renderDetailedClicks(rows) {
+    const tbody = document.getElementById("detailed-clicks-body");
+    if (!rows?.length) {
+      tbody.innerHTML = '<tr><td colspan="5" style="color:var(--text-faint);text-align:center;padding:2rem">No detailed clicks yet.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = rows.map(c => `
+      <tr>
+        <td><span class="offer-pill"><span class="offer-dot ${c.offer}"></span>${OFFER_NAMES[c.offer] || c.offer}</span></td>
+        <td><code class="mono">${c.tid}</code></td>
+        <td><code class="mono">${c.ip_hash || '-'}</code></td>
+        <td class="truncate">${c.user_agent || '-'}</td>
+        <td>${c.created_at || '-'}</td>
       </tr>
     `).join("");
   }
 
   function renderTids(rows) {
     const tidGrid = document.getElementById("tid-grid");
-
-    if (!rows || !rows.length) {
+    if (!rows?.length) {
       tidGrid.innerHTML = '<div class="tid-card" style="grid-column:1/-1;text-align:center;color:var(--text-faint)">No TIDs yet.</div>';
       return;
     }
-
     tidGrid.innerHTML = rows.map(t => `
       <div class="tid-card">
         <div class="tid-label">Tracking ID</div>
@@ -304,14 +331,13 @@
           <span>${OFFER_NAMES[t.offer] || t.offer}</span>
           <span class="badge badge-green">${t.clicks} clicks</span>
         </div>
-        <div style="font-size:.75rem;color:var(--text-faint);margin-top:.4rem">Last: ${t.last_click || "-"}</div>
+        <div style="font-size:.75rem;color:var(--text-faint);margin-top:.4rem">Last: ${t.last_click || '-'}</div>
       </div>
     `).join("");
   }
 
   function buildTidsFromRecent(rows) {
     const grouped = {};
-
     for (const row of rows || []) {
       if (!grouped[row.tid]) {
         grouped[row.tid] = {
@@ -323,7 +349,6 @@
       }
       grouped[row.tid].clicks += 1;
     }
-
     return Object.values(grouped);
   }
 
@@ -336,25 +361,22 @@
         }
       });
 
-      if (!res.ok) {
-        throw new Error(`HTTP ${res.status}`);
-      }
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
       const data = await res.json();
 
       document.getElementById("stat-total").textContent = Number(data.total || 0).toLocaleString();
       document.getElementById("stat-today").textContent = Number(data.today || 0).toLocaleString();
       document.getElementById("stat-week").textContent = Number(data.week || 0).toLocaleString();
-
       document.getElementById("delta-total").textContent = `↑ ${Number(data.today || 0).toLocaleString()} clicks today`;
       document.getElementById("delta-today").textContent = `↑ ${Number(data.today || 0).toLocaleString()} clicks today`;
       document.getElementById("delta-week").textContent = `↑ ${Number(data.week || 0).toLocaleString()} this week`;
 
       const byOffer = renderBars(data.byOffer || []);
-      document.getElementById("stat-offers").textContent =
-        Object.values(byOffer).filter(v => v > 0).length || 4;
+      document.getElementById("stat-offers").textContent = Object.values(byOffer).filter(v => v > 0).length || 4;
 
       renderRecentClicks(data.recentClicks || []);
+      renderDetailedClicks(data.recentClicks || []);
       renderTids(data.tids || buildTidsFromRecent(data.recentClicks || []));
 
       document.getElementById("live-badge").textContent = "● Live";
@@ -370,3 +392,5 @@
   loadData();
   setInterval(loadData, 60000);
 </script>
+</body>
+</html>
