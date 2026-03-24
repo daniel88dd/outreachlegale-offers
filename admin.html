@@ -219,141 +219,154 @@
 </div>
 
 <script>
-  // Replace these after you deploy the Worker.
   const WORKER_BASE_URL = "https://outreachgo-clicks.outreachlegale.workers.dev";
   const ADMIN_TOKEN = "my-super-secret-301041398";
-  const res = await fetch(`${WORKER_BASE_URL}/api/stats`, {
-  headers: {
-    'Accept': 'application/json',
-    'x-admin-token': ADMIN_TOKEN
-  }
-});
-
-  const MOCK = {
-    total: 1482,
-    today: 37,
-    week: 284,
-    byOffer: { prodentim: 612, prostavive: 401, jointcare: 284, mitolyn: 185 },
-    recentClicks: [
-      { offer: 'prodentim',  tid: 'tid_8f3a2c1', time: '2 min ago' },
-      { offer: 'prostavive', tid: 'tid_9d1b4e7', time: '5 min ago' },
-      { offer: 'jointcare',  tid: 'tid_2c8f0a3', time: '11 min ago' },
-      { offer: 'mitolyn',    tid: 'tid_5e7d1b9', time: '18 min ago' },
-      { offer: 'prodentim',  tid: 'tid_4a3c6f2', time: '22 min ago' },
-      { offer: 'jointcare',  tid: 'tid_0b9e5d8', time: '31 min ago' },
-      { offer: 'prostavive', tid: 'tid_7f1a4c0', time: '45 min ago' },
-      { offer: 'prodentim',  tid: 'tid_3d8b2e6', time: '52 min ago' },
-      { offer: 'mitolyn',    tid: 'tid_6c0f9a1', time: '1 hr ago' },
-      { offer: 'prodentim',  tid: 'tid_1e7b3d5', time: '1 hr ago' }
-    ],
-    tids: [
-      { tid: 'tid_8f3a2c1', offer: 'ProDentim', clicks: 74, last: '2 min ago' },
-      { tid: 'tid_9d1b4e7', offer: 'ProstaVive', clicks: 52, last: '5 min ago' },
-      { tid: 'tid_2c8f0a3', offer: 'Joint Care', clicks: 41, last: '11 min ago' },
-      { tid: 'tid_5e7d1b9', offer: 'Mitolyn', clicks: 38, last: '18 min ago' },
-      { tid: 'tid_4a3c6f2', offer: 'ProDentim', clicks: 29, last: '22 min ago' },
-      { tid: 'tid_0b9e5d8', offer: 'Joint Care', clicks: 21, last: '31 min ago' }
-    ]
-  };
 
   const OFFER_NAMES = {
-    prodentim: 'ProDentim',
-    prostavive: 'ProstaVive',
-    jointcare: 'Joint Care',
-    mitolyn: 'Mitolyn'
+    prodentim: "ProDentim",
+    prostavive: "ProstaVive",
+    jointcare: "Joint Care",
+    mitolyn: "Mitolyn"
   };
 
   function setNotice(message, isError = false) {
-    const el = document.getElementById('notice');
+    const el = document.getElementById("notice");
     el.textContent = message;
-    el.className = isError ? 'notice error' : 'notice';
+    el.className = isError ? "notice error" : "notice";
   }
 
   function updateTimestamp() {
     const now = new Date();
-    document.getElementById('last-updated').textContent = `Updated ${now.toLocaleTimeString()}`;
+    document.getElementById("last-updated").textContent = `Updated ${now.toLocaleTimeString()}`;
   }
 
-  function renderBars(byOffer) {
-    const safe = {
-      prodentim: byOffer.prodentim || 0,
-      prostavive: byOffer.prostavive || 0,
-      jointcare: byOffer.jointcare || 0,
-      mitolyn: byOffer.mitolyn || 0,
+  function normalizeByOffer(rows) {
+    const map = {
+      prodentim: 0,
+      prostavive: 0,
+      jointcare: 0,
+      mitolyn: 0
     };
-    const values = Object.values(safe);
-    const max = Math.max(...values, 1);
-    for (const [key, val] of Object.entries(safe)) {
+
+    if (Array.isArray(rows)) {
+      for (const row of rows) {
+        if (row.offer in map) {
+          map[row.offer] = Number(row.count || 0);
+        }
+      }
+    }
+
+    return map;
+  }
+
+  function renderBars(byOfferRows) {
+    const byOffer = normalizeByOffer(byOfferRows);
+    const max = Math.max(...Object.values(byOffer), 1);
+
+    for (const [key, val] of Object.entries(byOffer)) {
       document.getElementById(`bar-${key}`).textContent = val.toLocaleString();
       document.getElementById(`bar-${key}-fill`).style.width = `${(val / max) * 100}%`;
     }
+
+    return byOffer;
   }
 
   function renderRecentClicks(rows) {
-    const tbody = document.getElementById('recent-clicks-body');
-    if (!rows?.length) {
+    const tbody = document.getElementById("recent-clicks-body");
+
+    if (!rows || !rows.length) {
       tbody.innerHTML = '<tr><td colspan="3" style="color:var(--text-faint);text-align:center;padding:2rem">No clicks yet.</td></tr>';
       return;
     }
+
     tbody.innerHTML = rows.map(c => `
       <tr>
         <td><span class="offer-pill"><span class="offer-dot ${c.offer}"></span>${OFFER_NAMES[c.offer] || c.offer}</span></td>
         <td><code class="mono" style="font-size:.75rem;color:var(--text-muted)">${c.tid}</code></td>
-        <td style="color:var(--text-muted);font-size:.8125rem">${c.time}</td>
+        <td style="color:var(--text-muted);font-size:.8125rem">${c.created_at || "-"}</td>
       </tr>
-    `).join('');
+    `).join("");
   }
 
   function renderTids(rows) {
-    const tidGrid = document.getElementById('tid-grid');
-    if (!rows?.length) {
+    const tidGrid = document.getElementById("tid-grid");
+
+    if (!rows || !rows.length) {
       tidGrid.innerHTML = '<div class="tid-card" style="grid-column:1/-1;text-align:center;color:var(--text-faint)">No TIDs yet.</div>';
       return;
     }
+
     tidGrid.innerHTML = rows.map(t => `
       <div class="tid-card">
         <div class="tid-label">Tracking ID</div>
         <div class="tid-value">${t.tid}</div>
         <div class="tid-offer">
-          <span>${t.offer}</span>
+          <span>${OFFER_NAMES[t.offer] || t.offer}</span>
           <span class="badge badge-green">${t.clicks} clicks</span>
         </div>
-        <div style="font-size:.75rem;color:var(--text-faint);margin-top:.4rem">Last: ${t.last}</div>
+        <div style="font-size:.75rem;color:var(--text-faint);margin-top:.4rem">Last: ${t.last_click || "-"}</div>
       </div>
-    `).join('');
+    `).join("");
   }
 
-  function renderData(data) {
-    document.getElementById('stat-total').textContent = Number(data.total || 0).toLocaleString();
-    document.getElementById('stat-today').textContent = Number(data.today || 0).toLocaleString();
-    document.getElementById('stat-week').textContent = Number(data.week || 0).toLocaleString();
-    document.getElementById('delta-total').textContent = `↑ ${Number(data.today || 0).toLocaleString()} clicks today`;
-    document.getElementById('delta-today').textContent = `↑ ${Number(data.today || 0).toLocaleString()} clicks today`;
-    document.getElementById('delta-week').textContent = `↑ ${Number(data.week || 0).toLocaleString()} this week`;
-    document.getElementById('stat-offers').textContent = Object.keys(data.byOffer || {}).length || 4;
-    renderBars(data.byOffer || {});
-    renderRecentClicks(data.recentClicks || []);
-    renderTids(data.tids || []);
-    updateTimestamp();
+  function buildTidsFromRecent(rows) {
+    const grouped = {};
+
+    for (const row of rows || []) {
+      if (!grouped[row.tid]) {
+        grouped[row.tid] = {
+          tid: row.tid,
+          offer: row.offer,
+          clicks: 0,
+          last_click: row.created_at || "-"
+        };
+      }
+      grouped[row.tid].clicks += 1;
+    }
+
+    return Object.values(grouped);
   }
 
   async function loadData() {
     try {
-      const res = await fetch(ANALYTICS_ENDPOINT, { headers: { 'Accept': 'application/json' } });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const res = await fetch(`${WORKER_BASE_URL}/api/stats`, {
+        headers: {
+          "Accept": "application/json",
+          "x-admin-token": ADMIN_TOKEN
+        }
+      });
+
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}`);
+      }
+
       const data = await res.json();
-      renderData(data);
-      document.getElementById('live-badge').textContent = '● Live';
-      setNotice('Connected to Worker analytics endpoint.');
+
+      document.getElementById("stat-total").textContent = Number(data.total || 0).toLocaleString();
+      document.getElementById("stat-today").textContent = Number(data.today || 0).toLocaleString();
+      document.getElementById("stat-week").textContent = Number(data.week || 0).toLocaleString();
+
+      document.getElementById("delta-total").textContent = `↑ ${Number(data.today || 0).toLocaleString()} clicks today`;
+      document.getElementById("delta-today").textContent = `↑ ${Number(data.today || 0).toLocaleString()} clicks today`;
+      document.getElementById("delta-week").textContent = `↑ ${Number(data.week || 0).toLocaleString()} this week`;
+
+      const byOffer = renderBars(data.byOffer || []);
+      document.getElementById("stat-offers").textContent =
+        Object.values(byOffer).filter(v => v > 0).length || 4;
+
+      renderRecentClicks(data.recentClicks || []);
+      renderTids(data.tids || buildTidsFromRecent(data.recentClicks || []));
+
+      document.getElementById("live-badge").textContent = "● Live";
+      setNotice("Connected to live Worker analytics.");
+      updateTimestamp();
     } catch (err) {
-      renderData(MOCK);
-      document.getElementById('live-badge').textContent = '● Mock';
-      setNotice(`Using mock data because the Worker endpoint is not ready yet (${err.message}).`, true);
+      document.getElementById("live-badge").textContent = "● Error";
+      setNotice(`Worker connection failed: ${err.message}`, true);
+      console.error(err);
     }
   }
 
   loadData();
   setInterval(loadData, 60000);
 </script>
-</body>
-</html>
