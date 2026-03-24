@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>OutreachGo — The Curator's Edge for Business Tools</title>
-  <meta name="description" content="Independently curated, high-performance business platforms — vetted for results, not commissions."/>
+  <title>OutreachGo — Curated Dental & Wellness Recommendations</title>
+  <meta name="description" content="Independently curated oral health, joint care, and wellness products — reviewed for quality, not commissions."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet"/>
@@ -311,14 +311,40 @@
     .f-links a:hover { color: var(--text); }
     .footer-bottom { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--glass-border); font-size: .75rem; color: var(--text-faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
 
+    /* ─── PDF LEAD MAGNET ─── */
+    .pdf-section {
+      background: var(--deep);
+      border-top: 1px solid var(--glass-border);
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .pdf-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .pdf-mock {
+      aspect-ratio: 3/4; max-width: 280px;
+      background: var(--layer); border-radius: var(--radius);
+      border: 1px solid var(--glass-border);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 1rem; padding: 2.5rem; position: relative; overflow: hidden;
+    }
+    .pdf-mock::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,.08) 0%, transparent 70%);
+    }
+    .pdf-icon { font-size: 3rem; position: relative; }
+    .pdf-mock-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--text); text-align: center; line-height: 1.3; position: relative; }
+    .pdf-mock-sub { font-size: .75rem; color: var(--text-faint); text-align: center; text-transform: uppercase; letter-spacing: .08em; position: relative; }
+    .pdf-copy .btn-primary { margin-top: 1rem; }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 960px) {
       .nav-center { display: none; }
       .offers-grid { grid-template-columns: 1fr; }
       .offer-card.wide { flex-direction: column; grid-column: span 1; }
       .offer-card.wide .card-visual { flex: none; }
-      .process-grid { grid-template-columns: 1fr 1fr; }
-      .editorial-section .inner { grid-template-columns: 1fr; }
+      .pdf-inner { grid-template-columns: 1fr; }
+      .pdf-mock { max-width: 200px; }
+
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 600px) {
@@ -340,11 +366,11 @@
 <nav>
   <a href="/" class="nav-logo">Outreach<em>Go</em></a>
   <ul class="nav-center">
-    <li><a href="/offers">Offers</a></li>
+    <li><a href="/offers">Products</a></li>
     <li><a href="/disclosure">Disclosure</a></li>
     <li><a href="/privacy">Privacy</a></li>
   </ul>
-  <a href="/offers" class="nav-cta">Browse Offers <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  <a href="/assets/dental-guide.pdf" class="nav-cta" download>Free Dental Guide <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
 </nav>
 
 <!-- ── HERO ── -->
@@ -352,23 +378,23 @@
   <div class="hero-bg"></div>
   <div class="hero-grid-lines"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Curated Business Intelligence</div>
-    <h1>The tools that<br/><em>move the needle.</em></h1>
-    <p class="hero-sub">We cut through vendor noise and market saturation to surface the platforms that consistently deliver — for operators, founders, and growing teams.</p>
+    <div class="hero-eyebrow">Trusted Wellness & Oral Health</div>
+    <h1>Your health,<br/><em>thoughtfully guided.</em></h1>
+    <p class="hero-sub">We research and curate evidence-informed dental, joint, and metabolic wellness products — so you can make confident decisions about your daily care routine.</p>
     <div class="hero-actions">
       <a href="/offers" class="btn-primary">
-        Explore Top Offers
+        Explore Products
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <a href="#methodology" class="btn-ghost">
-        Our methodology
+      <a href="#how-we-review" class="btn-ghost">
+        How we review
         <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
       </a>
     </div>
     <div class="hero-stats">
-      <div><div class="stat-val">3+</div><div class="stat-lbl">Curated Platforms</div></div>
+      <div><div class="stat-val">4</div><div class="stat-lbl">Curated Products</div></div>
       <div><div class="stat-val">100%</div><div class="stat-lbl">Independent Review</div></div>
-      <div><div class="stat-val">Free</div><div class="stat-lbl">To Browse</div></div>
+      <div><div class="stat-val">Free</div><div class="stat-lbl">Dental PDF Guide</div></div>
     </div>
   </div>
 </section>
@@ -376,18 +402,18 @@
 <!-- ── TICKER ── -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker-inner">
-    <span class="t-item"><span class="t-dot"></span>ClickFunnels — Funnel Builder</span>
-    <span class="t-item"><span class="t-dot"></span>Fiverr — Freelance Marketplace</span>
-    <span class="t-item"><span class="t-dot"></span>Monday.com — Project Management</span>
-    <span class="t-item"><span class="t-dot"></span>Free Trials Available</span>
+    <span class="t-item"><span class="t-dot"></span>ProDentim — Oral Health Support</span>
+    <span class="t-item"><span class="t-dot"></span>ProstaVive — Men's Wellness</span>
+    <span class="t-item"><span class="t-dot"></span>Joint Care — Mobility Support</span>
+    <span class="t-item"><span class="t-dot"></span>Mitolyn — Metabolic Wellness</span>
     <span class="t-item"><span class="t-dot"></span>Independently Reviewed</span>
-    <span class="t-item"><span class="t-dot"></span>No Hidden Costs</span>
-    <span class="t-item"><span class="t-dot"></span>ClickFunnels — Funnel Builder</span>
-    <span class="t-item"><span class="t-dot"></span>Fiverr — Freelance Marketplace</span>
-    <span class="t-item"><span class="t-dot"></span>Monday.com — Project Management</span>
-    <span class="t-item"><span class="t-dot"></span>Free Trials Available</span>
+    <span class="t-item"><span class="t-dot"></span>No Medical Claims</span>
+    <span class="t-item"><span class="t-dot"></span>ProDentim — Oral Health Support</span>
+    <span class="t-item"><span class="t-dot"></span>ProstaVive — Men's Wellness</span>
+    <span class="t-item"><span class="t-dot"></span>Joint Care — Mobility Support</span>
+    <span class="t-item"><span class="t-dot"></span>Mitolyn — Metabolic Wellness</span>
     <span class="t-item"><span class="t-dot"></span>Independently Reviewed</span>
-    <span class="t-item"><span class="t-dot"></span>No Hidden Costs</span>
+    <span class="t-item"><span class="t-dot"></span>No Medical Claims</span>
   </div>
 </div>
 
@@ -395,90 +421,116 @@
 <section class="featured-section">
   <div class="sec-head">
     <div>
-      <div class="kicker">Featured Picks</div>
-      <h2>Hand-selected for <em>real performance</em></h2>
-      <p class="sec-sub">Every platform is reviewed for quality, track record, and actual value delivered to teams like yours.</p>
+      <div class="kicker">Featured Products</div>
+      <h2>Curated for <em>real wellness</em></h2>
+      <p class="sec-sub">Each product is reviewed for ingredient quality, formulation rationale, and real-world user feedback before we feature it.</p>
     </div>
-    <a href="/offers" class="see-all">All offers <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a href="/offers" class="see-all">All products <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   </div>
 
   <div class="offers-grid">
 
-    <!-- Monday — wide/featured -->
+    <!-- ProDentim — featured/wide -->
     <div class="offer-card wide">
       <div class="card-visual">
         <div class="offer-badge-pill">⭐ Editor's Pick</div>
-        <span class="card-emoji">📋</span>
+        <!-- PRODUCT IMAGE: replace src with real product image -->
+        <div style="margin-top:auto;padding-top:.75rem;width:80px;height:80px;border-radius:12px;background:var(--glass-border);display:grid;place-items:center;font-size:2rem;" title="ProDentim product image placeholder">🦷</div>
       </div>
       <div style="display:flex;flex-direction:column;flex:1;min-width:0;">
         <div class="card-info">
-          <div class="offer-cat">Project Management</div>
-          <div class="offer-name">Monday.com</div>
-          <p class="offer-desc">The work OS trusted by 200,000+ companies worldwide. Unify teams with visual workflows, automations, and real-time dashboards that actually get adopted — not abandoned after week one.</p>
+          <div class="offer-cat">Oral Health</div>
+          <div class="offer-name">ProDentim</div>
+          <p class="offer-desc">A uniquely formulated oral care supplement designed to support a healthy balance of beneficial bacteria in the mouth. Made with a proprietary blend of probiotic strains and natural ingredients selected for dental and gum wellness.</p>
           <div class="offer-meta">
             <div class="rating"><span class="stars">★★★★★</span> 4.9</div>
-            <div class="perk">Free plan available</div>
+            <div class="perk">Oral Probiotics</div>
           </div>
         </div>
-        <a href="https://go.outreachgo.net/monday" class="card-cta" rel="noopener">
-          View Offer
+        <a href="https://go.outreachgo.net/prodentim" class="card-cta" rel="noopener">
+          Learn More
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
     </div>
 
-    <!-- ClickFunnels -->
+    <!-- ProstaVive -->
     <div class="offer-card">
       <div class="card-visual">
-        <span class="card-emoji">🚀</span>
+        <!-- PRODUCT IMAGE: replace with real product image -->
+        <div style="margin-top:auto;padding-top:.75rem;width:64px;height:64px;border-radius:10px;background:var(--glass-border);display:grid;place-items:center;font-size:1.75rem;" title="ProstaVive product image placeholder">💊</div>
       </div>
       <div class="card-info">
-        <div class="offer-cat">Sales & Funnels</div>
-        <div class="offer-name">ClickFunnels</div>
-        <p class="offer-desc">Build complete sales funnels without code. Opt-ins, upsells, memberships — the full revenue flow handled in one platform.</p>
+        <div class="offer-cat">Men's Wellness</div>
+        <div class="offer-name">ProstaVive</div>
+        <p class="offer-desc">A targeted men's wellness formula developed to support prostate health and vitality, using a blend of plant-based extracts and nutritional compounds.</p>
         <div class="offer-meta">
           <div class="rating"><span class="stars">★★★★★</span> 4.8</div>
-          <div class="perk">14-day trial</div>
+          <div class="perk">Men's Health</div>
         </div>
       </div>
-      <a href="https://go.outreachgo.net/clickfunnels" class="card-cta" rel="noopener">
-        View Offer
+      <a href="https://go.outreachgo.net/prostavive" class="card-cta" rel="noopener">
+        Learn More
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
 
-    <!-- Fiverr -->
+    <!-- Joint Care -->
     <div class="offer-card">
       <div class="card-visual">
-        <span class="card-emoji">🎨</span>
+        <!-- PRODUCT IMAGE: replace with real product image -->
+        <div style="margin-top:auto;padding-top:.75rem;width:64px;height:64px;border-radius:10px;background:var(--glass-border);display:grid;place-items:center;font-size:1.75rem;" title="Joint Care product image placeholder">🦴</div>
       </div>
       <div class="card-info">
-        <div class="offer-cat">Freelance Marketplace</div>
-        <div class="offer-name">Fiverr Business</div>
-        <p class="offer-desc">700+ categories. Professional talent for design, dev, content, and marketing — without the overhead of an agency.</p>
+        <div class="offer-cat">Joint & Mobility</div>
+        <div class="offer-name">Joint Care</div>
+        <p class="offer-desc">A comprehensive joint support formula designed to promote comfort and mobility. Formulated with natural compounds that support cartilage and connective tissue health.</p>
         <div class="offer-meta">
           <div class="rating"><span class="stars">★★★★★</span> 4.7</div>
-          <div class="perk">Pay per project</div>
+          <div class="perk">Mobility Support</div>
         </div>
       </div>
-      <a href="https://go.outreachgo.net/fiverr" class="card-cta" rel="noopener">
-        View Offer
+      <a href="https://go.outreachgo.net/jointcare" class="card-cta" rel="noopener">
+        Learn More
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
+    </div>
+
+    <!-- Mitolyn — wide card in second row -->
+    <div class="offer-card wide">
+      <div class="card-visual">
+        <!-- PRODUCT IMAGE: replace with real product image -->
+        <div style="margin-top:auto;padding-top:.75rem;width:80px;height:80px;border-radius:12px;background:var(--glass-border);display:grid;place-items:center;font-size:2rem;" title="Mitolyn product image placeholder">⚡</div>
+      </div>
+      <div style="display:flex;flex-direction:column;flex:1;min-width:0;">
+        <div class="card-info">
+          <div class="offer-cat">Metabolism & Energy</div>
+          <div class="offer-name">Mitolyn</div>
+          <p class="offer-desc">A metabolic wellness supplement formulated to support energy production at the cellular level. Mitolyn is designed for adults looking to support healthy weight management and daily vitality through mitochondrial health.</p>
+          <div class="offer-meta">
+            <div class="rating"><span class="stars">★★★★★</span> 4.8</div>
+            <div class="perk">Metabolic Wellness</div>
+          </div>
+        </div>
+        <a href="https://go.outreachgo.net/mitolyn" class="card-cta" rel="noopener">
+          Learn More
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
 
   </div>
 </section>
 
 <!-- ── PROCESS ── -->
-<section class="process-section" id="methodology">
-  <div class="kicker">Our Process</div>
+<section class="process-section" id="how-we-review">
+  <div class="kicker">Our Review Process</div>
   <h2>What earns a spot here</h2>
   <div class="process-grid">
-    <div class="process-card"><div class="step-num">01</div><div class="step-title">Market Research</div><p class="step-desc">We map the landscape, analyze user sentiment across review platforms, and separate signal from marketing noise.</p></div>
-    <div class="process-card"><div class="step-num">02</div><div class="step-title">Practitioner Review</div><p class="step-desc">Real operators test each platform for reliability, workflow fit, support responsiveness, and pricing transparency.</p></div>
-    <div class="process-card"><div class="step-num">03</div><div class="step-title">Value Scoring</div><p class="step-desc">Features, pricing, onboarding quality, and ROI potential are scored. Only platforms above threshold are listed.</p></div>
-    <div class="process-card"><div class="step-num">04</div><div class="step-title">Ongoing Audit</div><p class="step-desc">We monitor platform changes, user feedback, and pricing shifts. Listings that no longer qualify are removed.</p></div>
+    <div class="process-card"><div class="step-num">01</div><div class="step-title">Ingredient Analysis</div><p class="step-desc">We examine each product's formulation — reviewing active compounds, sourcing claims, and whether the ingredient rationale is grounded in published nutritional research.</p></div>
+    <div class="process-card"><div class="step-num">02</div><div class="step-title">User Feedback Review</div><p class="step-desc">We analyze verified customer experiences across multiple platforms to identify consistent patterns in satisfaction, tolerability, and results over time.</p></div>
+    <div class="process-card"><div class="step-num">03</div><div class="step-title">Brand & Safety Check</div><p class="step-desc">We only feature products from brands that are transparent about manufacturing standards, clearly disclose their formulas, and operate legitimate customer support.</p></div>
+    <div class="process-card"><div class="step-num">04</div><div class="step-title">Ongoing Monitoring</div><p class="step-desc">Listings are reviewed periodically. If a product's quality, availability, or user satisfaction changes significantly, we update or remove the listing.</p></div>
   </div>
 </section>
 
@@ -487,18 +539,47 @@
   <div class="inner">
     <div class="editorial-block">
       <div class="ed-tag">Our Philosophy</div>
-      <div class="ed-quote">"Recommending the wrong tool is more costly than recommending none."</div>
+      <div class="ed-quote">"Good oral health is a window into your overall wellbeing — and it deserves more than a toothbrush."</div>
     </div>
     <div class="editorial-copy">
       <div class="kicker">Why We Exist</div>
-      <h2>Cut the noise.<br/><em>Find what works.</em></h2>
-      <p class="sec-sub">The B2B software market is saturated with paid placement, inflated reviews, and aggressive upsell cycles. We operate on different terms.</p>
+      <h2>Cut through the hype.<br/><em>Find what supports you.</em></h2>
+      <p class="sec-sub">The wellness supplement market is crowded with exaggerated claims and underdosed formulas. We apply a different standard before recommending anything.</p>
       <ul class="check-list">
-        <li>No tool pays to be featured on this site</li>
-        <li>Editorial decisions are made independently of commission potential</li>
-        <li>Pricing and feature claims are verified before publishing</li>
+        <li>No product pays to be featured on this site</li>
+        <li>We review ingredient quality and label transparency independently</li>
+        <li>We do not make medical claims or promise treatment outcomes</li>
         <li>Our affiliate disclosure is clear, prominent, and FTC-compliant</li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── PDF LEAD MAGNET ── -->
+<section class="pdf-section">
+  <div class="pdf-inner">
+    <div class="pdf-mock">
+      <div class="pdf-icon">📄</div>
+      <!-- PRODUCT IMAGE PLACEHOLDER: swap this block for a real PDF cover image -->
+      <!-- <img src="/assets/dental-guide-cover.jpg" alt="Dental Care Guide cover" style="width:100%;border-radius:8px;position:relative;" /> -->
+      <div class="pdf-mock-title">The Complete Dental Care Guide</div>
+      <div class="pdf-mock-sub">Free Download · PDF</div>
+    </div>
+    <div class="pdf-copy">
+      <div class="kicker">Free Resource</div>
+      <h2>Your guide to<br/><em>better oral health</em></h2>
+      <p class="sec-sub">We put together a practical, no-fluff guide covering daily dental habits, the role of oral microbiome balance, and what to look for in a quality oral care routine.</p>
+      <ul class="check-list" style="margin-top:1.25rem;">
+        <li>Daily oral hygiene habits that actually make a difference</li>
+        <li>Understanding gum health and how to maintain it</li>
+        <li>What the oral microbiome is and why it matters</li>
+        <li>How to evaluate oral care supplements honestly</li>
+      </ul>
+      <!-- PDF PLACEHOLDER LINK: replace /assets/dental-guide.pdf with your real hosted PDF URL -->
+      <a href="/assets/dental-guide.pdf" class="btn-primary" download style="margin-top:2rem;display:inline-flex;">
+        Download Free Guide
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -508,9 +589,9 @@
   <div class="trust-row">
     <div class="trust-item"><div class="trust-ico">🔍</div><div class="trust-lbl">Independently Reviewed</div></div>
     <div class="trust-item"><div class="trust-ico">📋</div><div class="trust-lbl">FTC Compliant</div></div>
-    <div class="trust-item"><div class="trust-ico">🔄</div><div class="trust-lbl">Regularly Audited</div></div>
+    <div class="trust-item"><div class="trust-ico">🚫</div><div class="trust-lbl">No Medical Claims</div></div>
     <div class="trust-item"><div class="trust-ico">🔒</div><div class="trust-lbl">No Data Selling</div></div>
-    <div class="trust-item"><div class="trust-ico">✅</div><div class="trust-lbl">Free to Browse</div></div>
+    <div class="trust-item"><div class="trust-ico">📄</div><div class="trust-lbl">Free PDF Guide</div></div>
   </div>
 </div>
 
@@ -525,13 +606,13 @@
   <div class="footer-grid">
     <div>
       <div class="f-brand-name">Outreach<em>Go</em></div>
-      <p class="f-desc">Independently curated business tools for operators, founders, and modern teams. We research so you don't have to.</p>
+      <p class="f-desc">Independently curated dental, joint, and metabolic wellness products. We research so you can choose with confidence.</p>
     </div>
     <div>
       <div class="f-col-title">Navigation</div>
       <ul class="f-links">
         <li><a href="/">Home</a></li>
-        <li><a href="/offers">Top Offers</a></li>
+        <li><a href="/offers">Products</a></li>
         <li><a href="/disclosure">Disclosure</a></li>
       </ul>
     </div>
